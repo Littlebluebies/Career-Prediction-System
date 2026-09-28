@@ -1,0 +1,27 @@
+# =============================================================
+# .gitattributes
+# Sources: docs/decisions/0005-repository-hygiene-and-privacy.md
+#          docs/decisions/0003-database-tooling.md (SQL checksum)
+# =============================================================
+
+# Default: let Git detect text files and store them with LF in the repo
+* text=auto
+
+# --- Always LF (run inside Linux containers / checksummed) ---
+*.sh          text eol=lf
+*.sql         text eol=lf
+*.yml         text eol=lf
+*.yaml        text eol=lf
+Dockerfile*   text eol=lf
+.env.example  text eol=lf
+
+# --- Binary: never convert, never diff as text ---
+*.pdf   binary
+*.doc   binary
+*.docx  binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.ico   binary

@@ -1,0 +1,37 @@
+# =============================================================
+# .gitignore
+# Sources: ENVIRONMENT_SETUP.md §18, FOLDER_STRUCTURE.md §34,
+#          docs/decisions/0005-repository-hygiene-and-privacy.md
+# =============================================================
+
+# --- Environment files (CLAUDE.md §13) ---
+# Ignore every .env variant at any depth (.env, .env.local, .env.*.local)
+.env*
+# ...except the template, which must be committed
+!.env.example
+
+# --- Node.js / Next.js ---
+node_modules/
+.next/
+dist/
+build/
+
+# --- Python ---
+.venv/
+__pycache__/
+*.pyc
+
+# --- User data: Resume / Portfolio (CLAUDE.md §13-14) ---
+uploads/
+storage/
+temporary/
+
+# --- Logs ---
+logs/
+*.log
+
+# --- Database dumps / backups (CLAUDE.md §13) ---
+*.dump
+*.backup
+*.bak
+*.sql.gz
