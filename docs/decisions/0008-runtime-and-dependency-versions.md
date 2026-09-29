@@ -110,3 +110,11 @@ eslint 9.39.5, eslint-config-next 16.3.6
 ```
 
 ข้อสังเกต: npm แจ้งว่า `eslint@9.39.5` deprecated (มี ESLint 10 แล้ว) ทั้ง `apps/api` และ `apps/web` ยังใช้ ESLint 9 ตามข้างบน ถ้าจะอัปเกรดให้ทำพร้อมกันทั้งสอง App และบันทึกใน ADR
+
+## หมายเหตุ (2026-09-30): หัวข้อ "ข้อจำกัดของการติดตั้งจริงใน Session นี้" ล้าสมัยแล้ว
+
+- ผู้ตัดสิน: เจ้าของโครงการ
+
+หัวข้อดังกล่าวบันทึกข้อจำกัดของรอบ Phase 0 เดิมที่ถูกยกเลิก และอ้างถึง `PHASE_0_REPORT.md` ซึ่งไม่มีใน Repository นี้ ถือว่า **superseded** แต่คงข้อความไว้เพื่อการตรวจสอบย้อนหลัง
+
+Phase 0 รอบปัจจุบันทดสอบบนเครื่องจริงแล้ว: `npm install` สร้าง `package-lock.json` ของทั้งสอง App, `pip install` และ Import ของ FastAPI/Uvicorn/Pydantic ผ่าน และ `docker compose up --build` เริ่มทั้ง 4 Service ได้โดย `GET /health` ของ Backend รายงาน `ok` ครบทุกส่วน
