@@ -58,3 +58,63 @@ Sandbox ที่ใช้สร้าง Phase 0 นี้ไม่มีกา
 - `docker compose up --build` ยังไม่ได้รัน ตรวจได้เพียงว่า `docker-compose.yml` เป็น YAML ที่ถูกต้อง
 
 รายละเอียดการทดสอบที่ทำได้จริงและยังไม่ได้ทำ อยู่ในรายงาน Phase 0
+
+## ภาคผนวก (2026-09-28): devDependencies เพิ่มเติมของ `apps/api`
+
+- ผู้ตัดสิน: เจ้าของโครงการ (เลือกทางเลือก A ระหว่าง Phase 0)
+
+รายการ npm ข้างบนไม่พอให้ TypeScript และ ESLint ทำงานกับ Express ได้จริง จึงเพิ่มเป็น devDependencies (ไม่อยู่ใน Production image):
+
+| Package | เหตุผล |
+| --- | --- |
+| `@types/node` (^24) | Type ของ Node.js ให้ตรงกับ Runtime 24 |
+| `@types/express` (^4.17) | Type ของ Express 4 |
+| `@types/pg` | Type ของ node-postgres |
+| `@types/cors` | Type ของ cors |
+| `typescript-eslint` | Parser และ Rules ให้ ESLint อ่านไฟล์ `.ts` ได้ |
+| `@eslint/js` (^9) | Recommended rules ของ ESLint 9 |
+
+`helmet` และ `dotenv` มี Type ในตัว ไม่ต้องเพิ่ม
+
+เวอร์ชันที่ติดตั้งจริงครั้งแรก (ตรึงใน `apps/api/package-lock.json`):
+
+```text
+express 4.22.3, pg 8.23.0, cors 2.8.6, helmet 8.3.0, dotenv 16.6.1
+typescript 6.0.3, tsx 4.23.15, eslint 9.39.5, @eslint/js 9.39.5, typescript-eslint 8.70.1
+@types/node 24.19.0, @types/express 4.17.25, @types/pg 8.23.1, @types/cors 2.8.19
+```
+
+ข้อควรระวัง: `typescript-eslint` 8.70.1 รองรับ TypeScript `>=4.8.4 <6.1.0` แต่ `package.json` ระบุ `typescript: ^6.0.3` ซึ่งยอมรับ 6.1 ขึ้นไป ก่อนอัปเดต TypeScript ให้ตรวจ Peer Dependency ของ `typescript-eslint` ก่อน
+
+## ภาคผนวก (2026-09-30): `apps/web` และ Tailwind CSS v4
+
+- ผู้ตัดสิน: เจ้าของโครงการ (เลือกทางเลือก B ระหว่าง Phase 0)
+
+`apps/web` สร้างด้วย `create-next-app@16` ซึ่งตั้งค่า **Tailwind CSS v4** เป็นค่าเริ่มต้น เจ้าของโครงการเลือกใช้ v4 แทน `tailwindcss ^3.4.17` ที่ระบุไว้ข้างบน `CLAUDE.md` §4 ระบุเพียง "Tailwind CSS" จึงไม่เปลี่ยน Locked Stack
+
+| เดิม (ข้างบน) | ใช้จริง | เหตุผล |
+| --- | --- | --- |
+| `tailwindcss ^3.4.17` | `tailwindcss ^4` | ค่าเริ่มต้นของ Next.js 16 และเป็นรุ่นที่พัฒนาต่อ |
+| `postcss ^8.4.49`, `autoprefixer ^10.4.20` | `@tailwindcss/postcss ^4` | v4 ใช้ Plugin นี้แทน และไม่ต้องใช้ autoprefixer (`postcss` ยังถูกติดตั้งเป็น Dependency ย่อย) |
+| `tailwind.config.ts` (FOLDER_STRUCTURE §4) | ไม่มีไฟล์นี้ | v4 ตั้งค่าใน CSS (`app/globals.css`: `@import "tailwindcss"`) |
+
+ปรับจาก Template ให้ตรงกับข้างบน: `typescript` `^5` -> `^6.0.0`, `@types/node` `^20` -> `^24`, เพิ่ม `engines.node` `>=24.0.0 <25.0.0`
+
+เวอร์ชันที่ติดตั้งจริงครั้งแรก (ตรึงใน `apps/web/package-lock.json`):
+
+```text
+next 16.3.6, react 19.2.8, react-dom 19.2.8
+tailwindcss 4.3.3, @tailwindcss/postcss 4.3.3
+typescript 6.0.3, @types/node 24.19.0, @types/react 19.3.0, @types/react-dom 19.3.0
+eslint 9.39.5, eslint-config-next 16.3.6
+```
+
+ข้อสังเกต: npm แจ้งว่า `eslint@9.39.5` deprecated (มี ESLint 10 แล้ว) ทั้ง `apps/api` และ `apps/web` ยังใช้ ESLint 9 ตามข้างบน ถ้าจะอัปเกรดให้ทำพร้อมกันทั้งสอง App และบันทึกใน ADR
+
+## หมายเหตุ (2026-09-30): หัวข้อ "ข้อจำกัดของการติดตั้งจริงใน Session นี้" ล้าสมัยแล้ว
+
+- ผู้ตัดสิน: เจ้าของโครงการ
+
+หัวข้อดังกล่าวบันทึกข้อจำกัดของรอบ Phase 0 เดิมที่ถูกยกเลิก และอ้างถึง `PHASE_0_REPORT.md` ซึ่งไม่มีใน Repository นี้ ถือว่า **superseded** แต่คงข้อความไว้เพื่อการตรวจสอบย้อนหลัง
+
+Phase 0 รอบปัจจุบันทดสอบบนเครื่องจริงแล้ว: `npm install` สร้าง `package-lock.json` ของทั้งสอง App, `pip install` และ Import ของ FastAPI/Uvicorn/Pydantic ผ่าน และ `docker compose up --build` เริ่มทั้ง 4 Service ได้โดย `GET /health` ของ Backend รายงาน `ok` ครบทุกส่วน
