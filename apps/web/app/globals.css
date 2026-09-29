@@ -1,0 +1,8 @@
+/* Tailwind CSS v4: configuration lives in CSS, no tailwind.config file
+   (docs/decisions/0008-runtime-and-dependency-versions.md, addendum) */
+@import "tailwindcss";
+
+body {
+  background: #ffffff;
+  color: #171717;
+}
