@@ -61,11 +61,30 @@ User -> Next.js -> (REST API) -> Express.js -> Service -> Repository -> PostgreS
 git clone <repository-url>
 cd Career-Prediction-System
 cp .env.example .env
-# แก้รหัสผ่านใน .env ก่อนใช้งาน ห้าม Commit .env
+# แก้รหัสผ่านใน .env ก่อนใช้งาน (POSTGRES_PASSWORD และใน DATABASE_URL ให้ตรงกัน) ห้าม Commit .env
 ```
 
-คำสั่งรันระบบจะเพิ่มเมื่อ Phase 0 (Project Setup) ผ่านเกณฑ์
+### Docker (ทุก Service)
+
+```bash
+docker compose up --build
+```
+
+| Service | URL |
+| --- | --- |
+| Frontend | http://localhost:3000 |
+| Backend health | http://localhost:4000/health |
+| AI Service health | http://127.0.0.1:8000/health (เครื่องนี้เท่านั้น) |
+| PostgreSQL | 127.0.0.1:5432 (เครื่องนี้เท่านั้น) |
+
+ปิด: `docker compose down` / รีเซ็ต Database: `docker compose down -v`
+
+### Local Development
+
+ดูวิธีรันแต่ละ Service ใน `apps/web/README.md`, `apps/api/README.md`, `services/ai/README.md`
+และ `docs/01-architecture/ENVIRONMENT_SETUP.md` §67
 
 ## Development Status
 
-Phase 0 — Project Setup (อยู่ระหว่างพัฒนา) ดูลำดับ Phase ใน `CLAUDE.md` §8
+- Phase 0 — Project Setup: ทุก Service Start ได้และติดต่อกันได้ใน Docker Compose (รอ Review)
+- ลำดับ Phase ทั้งหมดดูใน `CLAUDE.md` §8

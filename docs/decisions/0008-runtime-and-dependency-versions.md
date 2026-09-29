@@ -85,3 +85,28 @@ typescript 6.0.3, tsx 4.23.15, eslint 9.39.5, @eslint/js 9.39.5, typescript-esli
 ```
 
 ข้อควรระวัง: `typescript-eslint` 8.70.1 รองรับ TypeScript `>=4.8.4 <6.1.0` แต่ `package.json` ระบุ `typescript: ^6.0.3` ซึ่งยอมรับ 6.1 ขึ้นไป ก่อนอัปเดต TypeScript ให้ตรวจ Peer Dependency ของ `typescript-eslint` ก่อน
+
+## ภาคผนวก (2026-09-30): `apps/web` และ Tailwind CSS v4
+
+- ผู้ตัดสิน: เจ้าของโครงการ (เลือกทางเลือก B ระหว่าง Phase 0)
+
+`apps/web` สร้างด้วย `create-next-app@16` ซึ่งตั้งค่า **Tailwind CSS v4** เป็นค่าเริ่มต้น เจ้าของโครงการเลือกใช้ v4 แทน `tailwindcss ^3.4.17` ที่ระบุไว้ข้างบน `CLAUDE.md` §4 ระบุเพียง "Tailwind CSS" จึงไม่เปลี่ยน Locked Stack
+
+| เดิม (ข้างบน) | ใช้จริง | เหตุผล |
+| --- | --- | --- |
+| `tailwindcss ^3.4.17` | `tailwindcss ^4` | ค่าเริ่มต้นของ Next.js 16 และเป็นรุ่นที่พัฒนาต่อ |
+| `postcss ^8.4.49`, `autoprefixer ^10.4.20` | `@tailwindcss/postcss ^4` | v4 ใช้ Plugin นี้แทน และไม่ต้องใช้ autoprefixer (`postcss` ยังถูกติดตั้งเป็น Dependency ย่อย) |
+| `tailwind.config.ts` (FOLDER_STRUCTURE §4) | ไม่มีไฟล์นี้ | v4 ตั้งค่าใน CSS (`app/globals.css`: `@import "tailwindcss"`) |
+
+ปรับจาก Template ให้ตรงกับข้างบน: `typescript` `^5` -> `^6.0.0`, `@types/node` `^20` -> `^24`, เพิ่ม `engines.node` `>=24.0.0 <25.0.0`
+
+เวอร์ชันที่ติดตั้งจริงครั้งแรก (ตรึงใน `apps/web/package-lock.json`):
+
+```text
+next 16.3.6, react 19.2.8, react-dom 19.2.8
+tailwindcss 4.3.3, @tailwindcss/postcss 4.3.3
+typescript 6.0.3, @types/node 24.19.0, @types/react 19.3.0, @types/react-dom 19.3.0
+eslint 9.39.5, eslint-config-next 16.3.6
+```
+
+ข้อสังเกต: npm แจ้งว่า `eslint@9.39.5` deprecated (มี ESLint 10 แล้ว) ทั้ง `apps/api` และ `apps/web` ยังใช้ ESLint 9 ตามข้างบน ถ้าจะอัปเกรดให้ทำพร้อมกันทั้งสอง App และบันทึกใน ADR
