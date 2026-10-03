@@ -24,6 +24,7 @@
 | [0006](0006-dataset-metadata.md) | ที่เก็บและรูปแบบ Dataset Metadata | Accepted |
 | [0007](0007-documentation-audit-and-freeze.md) | Documentation Audit และ Freeze (READY) — Audit Record ไม่ใช่ Source of Truth ใหม่ | Accepted |
 | [0008](0008-runtime-and-dependency-versions.md) | Runtime (Node 24 / Python 3.13) และ Dependency Versions ที่ตรึงสำหรับ Phase 0 | Accepted |
+| [0009](0009-phase-1-database-decisions.md) | การตัดสินใจของ Phase 1: เครื่องมือทดสอบ, Convention ของ `major`, ชื่อสาขาใน Seed, Test Database | Accepted |
 
 0001 ถึง 0006 ตัดสินโดยเจ้าของโครงการ (โครงสร้างหลัก) และ Claude (รายละเอียดที่เหลือ ตามคำสั่งให้แก้ความเสี่ยงโดยตรง) เจ้าของโครงการสั่งให้ดำเนินการต่อหลังตรวจว่าไม่ขัดกับชิ้นงาน (2026-09-20) และเปลี่ยนได้ก่อนเริ่มเขียนโค้ดส่วนที่เกี่ยวข้อง
 
@@ -40,7 +41,7 @@
 | C-03 | เวลาประมวลผล Resume เทียบกับ Consent | Upload เก็บชั่วคราวเท่านั้น ประมวลผลหลัง `/analyze` และ Vertical Slice ใช้ข้อมูลสังเคราะห์ | Phase 4 |
 | C-04 | ระยะเวลาเก็บข้อมูล และ Endpoint ลบตามคำขอ | กำหนดค่าเดียวใช้ทั้ง Consent, Session TTL และ Cleanup | Phase 10 และก่อน Production |
 | C-05 | SUS: ใครคำนวณ เก็บรายข้อไหม และ Feedback ถูกลบพร้อม Session | Backend คำนวณ และกำหนดที่เก็บ Feedback ที่ไม่ถูกลบตาม Session | Phase 9-12 |
-| C-06 | แถวใน `major` ของสาขาที่ไม่มี Sub-major และวิธีดึงรายการ Major | กำหนด Convention ของ `major_name` และ `GET /majors` หรือ Config | Phase 1-2 |
+| C-06 | ~~แถวใน `major` ของสาขาที่ไม่มี Sub-major~~ (ตัดสินแล้วใน [0009](0009-phase-1-database-decisions.md)) และวิธีดึงรายการ Major | `GET /majors` หรือ Config | Phase 9 |
 | C-07 | สเกลและรูปแบบแสดง Match Score | เก็บ 0-100 แสดงทศนิยม 1 ตำแหน่ง | Phase 7 |
 | C-08 | รูปแบบ Version ของ Dataset และ Algorithm และความหมายของ `dataset_version_id` | รูปแบบเดียว และนิยาม Release ที่ครอบคลุมหลาย Dataset | Phase 3 |
 | C-09 | ที่เก็บคะแนนกลางทางและ Version ย่อย | Log หรือไฟล์ หรือรวมใน `algorithm_version` | Phase 7 |
