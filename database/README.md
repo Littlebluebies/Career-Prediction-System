@@ -40,7 +40,16 @@ Development: รีเซ็ตฐานข้อมูลแล้วรัน 
 
 ## How to Run Migration / Seed / Reset / Tests
 
-สร้างใน Phase 1 (`scripts/database/migrate.sh`, `seed.sh`, `reset.sh` ตาม FOLDER_STRUCTURE §24)
+รันจาก Root ของ Project หลัง `docker compose up -d postgres` (ไม่ต้องติดตั้ง psql บนเครื่อง)
+
+| Command | หน้าที่ |
+| --- | --- |
+| `bash scripts/database/migrate.sh` | Apply migration ที่ยังไม่เคย apply (ทีละไฟล์ใน Transaction เดียว + ตรวจ checksum) |
+| `bash scripts/database/seed.sh` | โหลด Development Seed (DEMO / TEST DATA) รันซ้ำได้ |
+| `bash scripts/database/reset.sh` | ลบและสร้าง Development DB ใหม่ แล้ว migrate + seed (ต้องพิมพ์ยืนยัน) |
+| `bash scripts/database/test.sh` | สร้าง `career_system_test` ใหม่ -> migrate -> seed -> `database/schema/tests.sql` -> ลบทิ้ง |
+
+ใช้ `DB_NAME=<name>` นำหน้า `migrate.sh` / `seed.sh` เพื่อเลือก Database อื่น
 
 ## Environment Variables
 
