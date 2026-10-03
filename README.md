@@ -86,5 +86,7 @@ docker compose up --build
 
 ## Development Status
 
-- Phase 0 — Project Setup: ทุก Service Start ได้และติดต่อกันได้ใน Docker Compose (รอ Review)
+- Phase 0 — Project Setup: ทุก Service Start ได้และติดต่อกันได้ใน Docker Compose ✅
+- Phase 1 — Database: Migration 001-021, Development Seed และ Database Tests (รอ Review)
+  ดูวิธีรันใน `database/README.md`
 - ลำดับ Phase ทั้งหมดดูใน `CLAUDE.md` §8
