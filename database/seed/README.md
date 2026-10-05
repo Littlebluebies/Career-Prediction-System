@@ -10,7 +10,17 @@ Seed      -> ใส่ข้อมูลเริ่มต้น
 | โฟลเดอร์ | ใช้สำหรับ | อ้างอิง |
 | --- | --- | --- |
 | `development/` | **DEMO / TEST DATA** สำหรับ Development, Testing, Demo | DATABASE_MIGRATION_PLAN §43.1 |
-| `reference/` | ข้อมูลอ้างอิงที่ผ่านการตรวจสอบแล้ว (Source Collection -> Validation -> Normalization -> Import) | DATABASE_MIGRATION_PLAN §43.2 |
+| `reference/` | ข้อมูลอ้างอิงที่ผ่านการตรวจสอบแล้ว (Source Collection -> Validation -> Normalization -> Import) **สร้างโดย `scripts/dataset/import.py` ห้ามแก้ด้วยมือ** | DATABASE_MIGRATION_PLAN §43.2, ADR 0010 §15 |
+
+## วิธีโหลด
+
+```bash
+bash scripts/database/seed.sh              # development (ค่าเริ่มต้น)
+bash scripts/database/seed.sh reference    # reference (ESCO pilot)
+bash scripts/database/reset.sh reference   # ล้าง Database แล้วโหลด reference
+```
+
+ทั้ง 2 โหมดใช้ใน Database เดียวกันไม่ได้ `seed.sh` จะหยุดถ้าพบข้อมูลของอีกโหมด (ADR 0010 §16)
 
 ## กติกา
 
