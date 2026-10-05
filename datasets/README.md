@@ -25,4 +25,16 @@ Dataset ของระบบ Source of Truth: `docs/03-ai-data/DATASET_SPEC.md`
 - Labour Market Demand ต้องมาจาก Job Posting -> Skill Extraction -> Skill Normalization -> Demand Analysis
   ห้ามสร้างจากการคาดเดา (`CLAUDE.md` §6)
 - ทุกผลลัพธ์ต้องย้อนไปถึง Dataset Version ได้ (`CLAUDE.md` §17)
-- `raw/` จะถูก Commit เข้า Git หรือไม่ ยังไม่ตัดสิน ตัดสินเมื่อเริ่ม Phase 3 (ADR 0005, C-14)
+- `raw/esco/` ไม่ Commit (ดาวน์โหลดซ้ำได้ เวอร์ชันและ SHA-256 อยู่ใน `metadata/`, ADR 0010 §5) ส่วน `raw/` ของ Job Posting ตัดสินใน Phase 3 (C-14)
+- ไฟล์ใน `processed/` และ `metadata/` สร้างโดย `scripts/dataset/` ห้ามแก้ด้วยมือ (ดู `scripts/dataset/README.md`)
+
+## Reference Dataset ปัจจุบัน (Phase 2, ESCO v1.2.1, version 2026.01)
+
+| ไฟล์ | เนื้อหา |
+| --- | --- |
+| `processed/occupation/esco_candidates.csv` | Candidate จากการค้นคำ + ผลตรวจของผู้วิจัย |
+| `processed/occupation/occupation.csv`, `occupation_alias.csv` | Occupation 5 อาชีพ (CF10 / CF11) และ Alias |
+| `processed/skill/skill.csv`, `skill_alias.csv` | Skill พร้อมหมวดหมู่และกฎที่ใช้ (`category_rule`) และ Alias |
+| `processed/skill/dropped_aliases.csv` | Alias ที่ถูกตัด (ชี้หลาย Skill หรือซ้ำชื่อหลัก) พร้อมเหตุผล |
+| `processed/occupation_skill/occupation_skill.csv` | ความสัมพันธ์ essential / optional |
+| `metadata/*_2026.01.json` | Metadata ตาม ADR 0006 |

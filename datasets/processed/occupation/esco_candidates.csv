@@ -1,0 +1,10 @@
+target,preferred_label,matched_label,isco_code,decision,career_family_code,reason,esco_uri
+Front-end Developer,user interface developer,front end developer,2512.5,include,CF10,altLabel 'front end developer' matches target 'Front-end Developer',http://data.europa.eu/esco/occupation/866c7813-2c03-47d7-9bdc-192cfbace57c
+Full-stack Developer,cloud software developer,full stack cloud software engineer,2512.8,exclude,,"altLabel 'full stack cloud software engineer' is a cloud engineering role, not web full-stack (DATASET_SPEC §7.2)",http://data.europa.eu/esco/occupation/781a6350-e686-45b9-b075-e4c8d5a05ff7
+UI/UX Designer,technical communicator,user experience designer,2641.4.4,exclude,,"altLabel 'user experience designer' matches, but the core function is technical documentation (DATASET_SPEC §7.2)",http://data.europa.eu/esco/occupation/8cb59bc4-1f39-477e-beea-effed12d186c
+UI/UX Designer,user experience analyst,user experience analyst,2511.19,include,CF11,Matches UX part of target 'UI/UX Designer',http://data.europa.eu/esco/occupation/faed411a-f920-4100-86a8-b877928b429c
+UI/UX Designer,user interface designer,user interface designer,2513.3,include,CF11,Matches UI part of target 'UI/UX Designer',http://data.europa.eu/esco/occupation/96e20037-0a25-4bf6-a25e-808d1605d890
+UI/UX Designer,user interface developer,user interface developer,2512.5,include,CF10,altLabel 'front end developer' matches target 'Front-end Developer',http://data.europa.eu/esco/occupation/866c7813-2c03-47d7-9bdc-192cfbace57c
+UI/UX Designer,web designer,ux designer,2166.15,include,CF11,altLabel 'ux designer' matches target 'UI/UX Designer',http://data.europa.eu/esco/occupation/30ed83ba-cc89-4d9f-a59d-5c783c1da56e
+Web Application Developer,web developer,web application developer,2513.5,include,CF10,Matches targets 'Web Developer' and 'Web Application Developer' (DATASET_SPEC §38),http://data.europa.eu/esco/occupation/c40a2919-48a9-40ea-b506-1f34f693496d
+Web Developer,web developer,web developer,2513.5,include,CF10,Matches targets 'Web Developer' and 'Web Application Developer' (DATASET_SPEC §38),http://data.europa.eu/esco/occupation/c40a2919-48a9-40ea-b506-1f34f693496d

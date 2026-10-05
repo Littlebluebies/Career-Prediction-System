@@ -1,0 +1,20 @@
+{
+  "dataset_name": "occupation",
+  "version": "2026.01",
+  "source": "ESCO v1.2.1 (https://esco.ec.europa.eu), classification, English, CSV",
+  "collection_date": "2026-10-05",
+  "coverage": "CF10 Web Development, CF11 UI/UX & Digital Product",
+  "description": "Pilot occupation framework (Semester 1, Web Full Stack) from ESCO",
+  "number_of_records": 5,
+  "processing_method": "Keyword search of ESCO preferred/alternative labels for the DATASET_SPEC §38 pilot targets, researcher review with recorded reasons (scripts/dataset/esco/occupation_selection.csv), career family assigned in the review; ESCO altLabels kept as aliases unless ambiguous.",
+  "processing_version": "build_esco_reference.py 1",
+  "schema_version": "migrations 001-021",
+  "notes": "29 aliases. Back-end / Full-stack Developer not in ESCO; considered in Phase 3 from job postings (ADR 0010 §9).",
+  "source_files": {
+    "occupations_en.csv": "8034348d84b6d1dd24a5bcf9609186ecbba0a85457ee2eacd65bddec33a51b4a",
+    "skills_en.csv": "d03b10efca94b4bcfa260a992cfde89c375f0fa12095d6662a663cfd2f9f2950",
+    "occupationSkillRelations_en.csv": "e1a46511f0ef4d505f106f1d41f528ef76d289f93e59d4d0cbaac38986102c44",
+    "broaderRelationsSkillPillar_en.csv": "56b70f4852b1f53c6192c979310c34c93f95436621d907083cf0d55b51d8e42d",
+    "skillGroups_en.csv": "644b68a174299eb05336eec36e0716c4671a0c6bdd4ac268803ecd6533dc739d"
+  }
+}

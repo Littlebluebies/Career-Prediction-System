@@ -1,0 +1,364 @@
+occupation_name,skill_name,relation_type,source
+user experience analyst,analyse business requirements,essential,ESCO v1.2.1: essential
+user experience analyst,application usability,essential,ESCO v1.2.1: essential
+user experience analyst,assess users' interaction with ICT applications,essential,ESCO v1.2.1: essential
+user experience analyst,behavioural science,essential,ESCO v1.2.1: essential
+user experience analyst,cognitive psychology,essential,ESCO v1.2.1: essential
+user experience analyst,conduct qualitative research,essential,ESCO v1.2.1: essential
+user experience analyst,conduct quantitative research,essential,ESCO v1.2.1: essential
+user experience analyst,conduct research interview,essential,ESCO v1.2.1: essential
+user experience analyst,create prototype of user experience solutions,essential,ESCO v1.2.1: essential
+user experience analyst,define technical requirements,essential,ESCO v1.2.1: essential
+user experience analyst,execute ICT user research activities,essential,ESCO v1.2.1: essential
+user experience analyst,human-computer interaction,essential,ESCO v1.2.1: essential
+user experience analyst,interactive media,essential,ESCO v1.2.1: essential
+user experience analyst,measure customer feedback,essential,ESCO v1.2.1: essential
+user experience analyst,measure software usability,essential,ESCO v1.2.1: essential
+user experience analyst,report analysis results,essential,ESCO v1.2.1: essential
+user experience analyst,software interaction design,essential,ESCO v1.2.1: essential
+user experience analyst,use experience map,essential,ESCO v1.2.1: essential
+user experience analyst,Agile project management,optional,ESCO v1.2.1: optional
+user experience analyst,apply systemic design thinking,optional,ESCO v1.2.1: optional
+user experience analyst,create website wireframe,optional,ESCO v1.2.1: optional
+user experience analyst,forecast future ICT network needs,optional,ESCO v1.2.1: optional
+user experience analyst,ICT project management methodologies,optional,ESCO v1.2.1: optional
+user experience analyst,ICT system user requirements,optional,ESCO v1.2.1: optional
+user experience analyst,identify ICT user needs,optional,ESCO v1.2.1: optional
+user experience analyst,identify technological needs,optional,ESCO v1.2.1: optional
+user experience analyst,LDAP,optional,ESCO v1.2.1: optional
+user experience analyst,lean project management,optional,ESCO v1.2.1: optional
+user experience analyst,LINQ,optional,ESCO v1.2.1: optional
+user experience analyst,manage localisation,optional,ESCO v1.2.1: optional
+user experience analyst,MDX,optional,ESCO v1.2.1: optional
+user experience analyst,N1QL,optional,ESCO v1.2.1: optional
+user experience analyst,online moderation techniques,optional,ESCO v1.2.1: optional
+user experience analyst,perform market research,optional,ESCO v1.2.1: optional
+user experience analyst,Process-based management,optional,ESCO v1.2.1: optional
+user experience analyst,query languages,optional,ESCO v1.2.1: optional
+user experience analyst,resource description framework query language,optional,ESCO v1.2.1: optional
+user experience analyst,software metrics,optional,ESCO v1.2.1: optional
+user experience analyst,SPARQL,optional,ESCO v1.2.1: optional
+user experience analyst,test system accessibility for users with special needs,optional,ESCO v1.2.1: optional
+user experience analyst,use access control software,optional,ESCO v1.2.1: optional
+user experience analyst,visual presentation techniques,optional,ESCO v1.2.1: optional
+user experience analyst,web analytics,optional,ESCO v1.2.1: optional
+user experience analyst,World Wide Web Consortium standards,optional,ESCO v1.2.1: optional
+user experience analyst,XQuery,optional,ESCO v1.2.1: optional
+user interface designer,application usability,essential,ESCO v1.2.1: essential
+user interface designer,assess users' interaction with ICT applications,essential,ESCO v1.2.1: essential
+user interface designer,build business relationships,essential,ESCO v1.2.1: essential
+user interface designer,create website wireframe,essential,ESCO v1.2.1: essential
+user interface designer,define technical requirements,essential,ESCO v1.2.1: essential
+user interface designer,design graphics,essential,ESCO v1.2.1: essential
+user interface designer,design process,essential,ESCO v1.2.1: essential
+user interface designer,design user interface,essential,ESCO v1.2.1: essential
+user interface designer,develop creative ideas,essential,ESCO v1.2.1: essential
+user interface designer,draw design sketches,essential,ESCO v1.2.1: essential
+user interface designer,graphics editor software,essential,ESCO v1.2.1: essential
+user interface designer,human-computer interaction,essential,ESCO v1.2.1: essential
+user interface designer,ICT accessibility standards,essential,ESCO v1.2.1: essential
+user interface designer,ICT security legislation,essential,ESCO v1.2.1: essential
+user interface designer,interact with users to gather requirements,essential,ESCO v1.2.1: essential
+user interface designer,interactive media,essential,ESCO v1.2.1: essential
+user interface designer,manage online content,essential,ESCO v1.2.1: essential
+user interface designer,software interaction design,essential,ESCO v1.2.1: essential
+user interface designer,software UI design patterns,essential,ESCO v1.2.1: essential
+user interface designer,task algorithmisation,essential,ESCO v1.2.1: essential
+user interface designer,test system accessibility for users with special needs,essential,ESCO v1.2.1: essential
+user interface designer,translate requirements into visual design,essential,ESCO v1.2.1: essential
+user interface designer,use an application-specific interface,essential,ESCO v1.2.1: essential
+user interface designer,use markup languages,essential,ESCO v1.2.1: essential
+user interface designer,use methodologies for user-centered design,essential,ESCO v1.2.1: essential
+user interface designer,web programming,essential,ESCO v1.2.1: essential
+user interface designer,World Wide Web Consortium standards,essential,ESCO v1.2.1: essential
+user interface designer,ABAP,optional,ESCO v1.2.1: optional
+user interface designer,Adobe Illustrator,optional,ESCO v1.2.1: optional
+user interface designer,Adobe Photoshop,optional,ESCO v1.2.1: optional
+user interface designer,Agile development,optional,ESCO v1.2.1: optional
+user interface designer,Agile project management,optional,ESCO v1.2.1: optional
+user interface designer,AJAX,optional,ESCO v1.2.1: optional
+user interface designer,analyse business requirements,optional,ESCO v1.2.1: optional
+user interface designer,APL,optional,ESCO v1.2.1: optional
+user interface designer,ASP.NET,optional,ESCO v1.2.1: optional
+user interface designer,Assembly (computer programming),optional,ESCO v1.2.1: optional
+user interface designer,augmented reality,optional,ESCO v1.2.1: optional
+user interface designer,business process modelling,optional,ESCO v1.2.1: optional
+user interface designer,C#,optional,ESCO v1.2.1: optional
+user interface designer,C++,optional,ESCO v1.2.1: optional
+user interface designer,COBOL,optional,ESCO v1.2.1: optional
+user interface designer,CoffeeScript,optional,ESCO v1.2.1: optional
+user interface designer,cognitive psychology,optional,ESCO v1.2.1: optional
+user interface designer,Common Lisp,optional,ESCO v1.2.1: optional
+user interface designer,computer programming,optional,ESCO v1.2.1: optional
+user interface designer,create software design,optional,ESCO v1.2.1: optional
+user interface designer,DevOps,optional,ESCO v1.2.1: optional
+user interface designer,Erlang,optional,ESCO v1.2.1: optional
+user interface designer,GIMP (graphics editor software),optional,ESCO v1.2.1: optional
+user interface designer,Groovy,optional,ESCO v1.2.1: optional
+user interface designer,Haskell,optional,ESCO v1.2.1: optional
+user interface designer,ICT project management methodologies,optional,ESCO v1.2.1: optional
+user interface designer,incremental development,optional,ESCO v1.2.1: optional
+user interface designer,iterative development,optional,ESCO v1.2.1: optional
+user interface designer,Java (computer programming),optional,ESCO v1.2.1: optional
+user interface designer,JavaScript,optional,ESCO v1.2.1: optional
+user interface designer,lean project management,optional,ESCO v1.2.1: optional
+user interface designer,Lisp,optional,ESCO v1.2.1: optional
+user interface designer,manage localisation,optional,ESCO v1.2.1: optional
+user interface designer,MATLAB,optional,ESCO v1.2.1: optional
+user interface designer,Microsoft Visio,optional,ESCO v1.2.1: optional
+user interface designer,ML (computer programming),optional,ESCO v1.2.1: optional
+user interface designer,natural language processing,optional,ESCO v1.2.1: optional
+user interface designer,Objective-C,optional,ESCO v1.2.1: optional
+user interface designer,OpenEdge Advanced Business Language,optional,ESCO v1.2.1: optional
+user interface designer,Pascal (computer programming),optional,ESCO v1.2.1: optional
+user interface designer,perform online data analysis,optional,ESCO v1.2.1: optional
+user interface designer,Perl,optional,ESCO v1.2.1: optional
+user interface designer,PHP,optional,ESCO v1.2.1: optional
+user interface designer,Process-based management,optional,ESCO v1.2.1: optional
+user interface designer,Prolog (computer programming),optional,ESCO v1.2.1: optional
+user interface designer,Prototyping development,optional,ESCO v1.2.1: optional
+user interface designer,Python (computer programming),optional,ESCO v1.2.1: optional
+user interface designer,quality standards,optional,ESCO v1.2.1: optional
+user interface designer,R,optional,ESCO v1.2.1: optional
+user interface designer,Rapid application development,optional,ESCO v1.2.1: optional
+user interface designer,Ruby (computer programming),optional,ESCO v1.2.1: optional
+user interface designer,SAP R3,optional,ESCO v1.2.1: optional
+user interface designer,SAS language,optional,ESCO v1.2.1: optional
+user interface designer,Scala,optional,ESCO v1.2.1: optional
+user interface designer,Scratch (computer programming),optional,ESCO v1.2.1: optional
+user interface designer,screen reader,optional,ESCO v1.2.1: optional
+user interface designer,SketchBook Pro,optional,ESCO v1.2.1: optional
+user interface designer,Smalltalk (computer programming),optional,ESCO v1.2.1: optional
+user interface designer,software design methodologies,optional,ESCO v1.2.1: optional
+user interface designer,Spiral development,optional,ESCO v1.2.1: optional
+user interface designer,Swift (computer programming),optional,ESCO v1.2.1: optional
+user interface designer,Synfig,optional,ESCO v1.2.1: optional
+user interface designer,TypeScript,optional,ESCO v1.2.1: optional
+user interface designer,use query languages,optional,ESCO v1.2.1: optional
+user interface designer,VBScript,optional,ESCO v1.2.1: optional
+user interface designer,Visual Basic,optional,ESCO v1.2.1: optional
+user interface designer,Waterfall development,optional,ESCO v1.2.1: optional
+user interface designer,web based collaborative platforms,optional,ESCO v1.2.1: optional
+user interface developer,analyse software specifications,essential,ESCO v1.2.1: essential
+user interface developer,computer programming,essential,ESCO v1.2.1: essential
+user interface developer,design graphics,essential,ESCO v1.2.1: essential
+user interface developer,design user interface,essential,ESCO v1.2.1: essential
+user interface developer,develop software prototype,essential,ESCO v1.2.1: essential
+user interface developer,draw design sketches,essential,ESCO v1.2.1: essential
+user interface developer,graphics editor software,essential,ESCO v1.2.1: essential
+user interface developer,integrated development environment software,essential,ESCO v1.2.1: essential
+user interface developer,interpret technical texts,essential,ESCO v1.2.1: essential
+user interface developer,software UI design patterns,essential,ESCO v1.2.1: essential
+user interface developer,style sheet languages,essential,ESCO v1.2.1: essential
+user interface developer,use an application-specific interface,essential,ESCO v1.2.1: essential
+user interface developer,use methodologies for user-centered design,essential,ESCO v1.2.1: essential
+user interface developer,use software design patterns,essential,ESCO v1.2.1: essential
+user interface developer,use software libraries,essential,ESCO v1.2.1: essential
+user interface developer,web programming,essential,ESCO v1.2.1: essential
+user interface developer,World Wide Web Consortium standards,essential,ESCO v1.2.1: essential
+user interface developer,ABAP,optional,ESCO v1.2.1: optional
+user interface developer,Adobe Illustrator,optional,ESCO v1.2.1: optional
+user interface developer,Adobe Photoshop,optional,ESCO v1.2.1: optional
+user interface developer,AJAX,optional,ESCO v1.2.1: optional
+user interface developer,Ajax Framework,optional,ESCO v1.2.1: optional
+user interface developer,Ansible,optional,ESCO v1.2.1: optional
+user interface developer,Apache Maven,optional,ESCO v1.2.1: optional
+user interface developer,APL,optional,ESCO v1.2.1: optional
+user interface developer,ASP.NET,optional,ESCO v1.2.1: optional
+user interface developer,Assembly (computer programming),optional,ESCO v1.2.1: optional
+user interface developer,augmented reality,optional,ESCO v1.2.1: optional
+user interface developer,C#,optional,ESCO v1.2.1: optional
+user interface developer,C++,optional,ESCO v1.2.1: optional
+user interface developer,COBOL,optional,ESCO v1.2.1: optional
+user interface developer,CoffeeScript,optional,ESCO v1.2.1: optional
+user interface developer,Common Lisp,optional,ESCO v1.2.1: optional
+user interface developer,create flowchart diagram,optional,ESCO v1.2.1: optional
+user interface developer,CSS,optional,ESCO v1.2.1: optional
+user interface developer,debug software,optional,ESCO v1.2.1: optional
+user interface developer,design interaction model,optional,ESCO v1.2.1: optional
+user interface developer,Drupal,optional,ESCO v1.2.1: optional
+user interface developer,Eclipse (integrated development environment software),optional,ESCO v1.2.1: optional
+user interface developer,Erlang,optional,ESCO v1.2.1: optional
+user interface developer,GIMP (graphics editor software),optional,ESCO v1.2.1: optional
+user interface developer,Groovy,optional,ESCO v1.2.1: optional
+user interface developer,Haskell,optional,ESCO v1.2.1: optional
+user interface developer,human-computer interaction,optional,ESCO v1.2.1: optional
+user interface developer,ICT debugging tools,optional,ESCO v1.2.1: optional
+user interface developer,ICT project management,optional,ESCO v1.2.1: optional
+user interface developer,Java (computer programming),optional,ESCO v1.2.1: optional
+user interface developer,JavaScript,optional,ESCO v1.2.1: optional
+user interface developer,JavaScript Framework,optional,ESCO v1.2.1: optional
+user interface developer,Jenkins (tools for software configuration management),optional,ESCO v1.2.1: optional
+user interface developer,JSSS,optional,ESCO v1.2.1: optional
+user interface developer,KDevelop,optional,ESCO v1.2.1: optional
+user interface developer,LESS,optional,ESCO v1.2.1: optional
+user interface developer,Lisp,optional,ESCO v1.2.1: optional
+user interface developer,MATLAB,optional,ESCO v1.2.1: optional
+user interface developer,Microsoft Visio,optional,ESCO v1.2.1: optional
+user interface developer,Microsoft Visual C++,optional,ESCO v1.2.1: optional
+user interface developer,ML (computer programming),optional,ESCO v1.2.1: optional
+user interface developer,NoSQL,optional,ESCO v1.2.1: optional
+user interface developer,Objective-C,optional,ESCO v1.2.1: optional
+user interface developer,OpenEdge Advanced Business Language,optional,ESCO v1.2.1: optional
+user interface developer,Pascal (computer programming),optional,ESCO v1.2.1: optional
+user interface developer,Perl,optional,ESCO v1.2.1: optional
+user interface developer,PHP,optional,ESCO v1.2.1: optional
+user interface developer,Prolog (computer programming),optional,ESCO v1.2.1: optional
+user interface developer,Puppet (tools for software configuration management),optional,ESCO v1.2.1: optional
+user interface developer,Python (computer programming),optional,ESCO v1.2.1: optional
+user interface developer,R,optional,ESCO v1.2.1: optional
+user interface developer,Ruby (computer programming),optional,ESCO v1.2.1: optional
+user interface developer,Salt (tools for software configuration management),optional,ESCO v1.2.1: optional
+user interface developer,SAP R3,optional,ESCO v1.2.1: optional
+user interface developer,SAS language,optional,ESCO v1.2.1: optional
+user interface developer,Sass,optional,ESCO v1.2.1: optional
+user interface developer,Scala,optional,ESCO v1.2.1: optional
+user interface developer,Scratch (computer programming),optional,ESCO v1.2.1: optional
+user interface developer,screen reader,optional,ESCO v1.2.1: optional
+user interface developer,SketchBook Pro,optional,ESCO v1.2.1: optional
+user interface developer,Smalltalk (computer programming),optional,ESCO v1.2.1: optional
+user interface developer,software interaction design,optional,ESCO v1.2.1: optional
+user interface developer,STAF,optional,ESCO v1.2.1: optional
+user interface developer,Swift (computer programming),optional,ESCO v1.2.1: optional
+user interface developer,Synfig,optional,ESCO v1.2.1: optional
+user interface developer,tools for software configuration management,optional,ESCO v1.2.1: optional
+user interface developer,TypeScript,optional,ESCO v1.2.1: optional
+user interface developer,use automatic programming,optional,ESCO v1.2.1: optional
+user interface developer,use concurrent programming,optional,ESCO v1.2.1: optional
+user interface developer,use functional programming,optional,ESCO v1.2.1: optional
+user interface developer,use logic programming,optional,ESCO v1.2.1: optional
+user interface developer,use markup languages,optional,ESCO v1.2.1: optional
+user interface developer,use object-oriented programming,optional,ESCO v1.2.1: optional
+user interface developer,use query languages,optional,ESCO v1.2.1: optional
+user interface developer,use scripting programming,optional,ESCO v1.2.1: optional
+user interface developer,utilise computer-aided software engineering tools,optional,ESCO v1.2.1: optional
+user interface developer,Vagrant,optional,ESCO v1.2.1: optional
+user interface developer,VBScript,optional,ESCO v1.2.1: optional
+user interface developer,Visual Basic,optional,ESCO v1.2.1: optional
+user interface developer,WordPress,optional,ESCO v1.2.1: optional
+user interface developer,Xcode,optional,ESCO v1.2.1: optional
+web designer,collaborate with designers,essential,ESCO v1.2.1: essential
+web designer,compose description for web elements,essential,ESCO v1.2.1: essential
+web designer,create website wireframe,essential,ESCO v1.2.1: essential
+web designer,establish customer rapport,essential,ESCO v1.2.1: essential
+web designer,implement front-end website design,essential,ESCO v1.2.1: essential
+web designer,JavaScript,essential,ESCO v1.2.1: essential
+web designer,JavaScript Framework,essential,ESCO v1.2.1: essential
+web designer,use markup languages,essential,ESCO v1.2.1: essential
+web designer,web programming,essential,ESCO v1.2.1: essential
+web designer,WebCMS,essential,ESCO v1.2.1: essential
+web designer,Adobe Photoshop,optional,ESCO v1.2.1: optional
+web designer,CSS,optional,ESCO v1.2.1: optional
+web designer,design web-based courses,optional,ESCO v1.2.1: optional
+web designer,enhance website visibility,optional,ESCO v1.2.1: optional
+web designer,GIMP (graphics editor software),optional,ESCO v1.2.1: optional
+web designer,graphics editor software,optional,ESCO v1.2.1: optional
+web designer,IBM WebSphere,optional,ESCO v1.2.1: optional
+web designer,Joomla,optional,ESCO v1.2.1: optional
+web designer,JSSS,optional,ESCO v1.2.1: optional
+web designer,manage online content,optional,ESCO v1.2.1: optional
+web designer,manage website,optional,ESCO v1.2.1: optional
+web designer,style sheet languages,optional,ESCO v1.2.1: optional
+web developer,analyse software specifications,essential,ESCO v1.2.1: essential
+web developer,collect customer feedback on applications,essential,ESCO v1.2.1: essential
+web developer,computer programming,essential,ESCO v1.2.1: essential
+web developer,content development processes,essential,ESCO v1.2.1: essential
+web developer,create flowchart diagram,essential,ESCO v1.2.1: essential
+web developer,debug software,essential,ESCO v1.2.1: essential
+web developer,develop digital content,essential,ESCO v1.2.1: essential
+web developer,develop software prototype,essential,ESCO v1.2.1: essential
+web developer,domain name service,essential,ESCO v1.2.1: essential
+web developer,ICT debugging tools,essential,ESCO v1.2.1: essential
+web developer,implement front-end website design,essential,ESCO v1.2.1: essential
+web developer,integrated development environment software,essential,ESCO v1.2.1: essential
+web developer,interpret technical texts,essential,ESCO v1.2.1: essential
+web developer,Joomla,essential,ESCO v1.2.1: essential
+web developer,style sheet languages,essential,ESCO v1.2.1: essential
+web developer,tools for software configuration management,essential,ESCO v1.2.1: essential
+web developer,translate requirements into visual design,essential,ESCO v1.2.1: essential
+web developer,use an application-specific interface,essential,ESCO v1.2.1: essential
+web developer,use e-services,essential,ESCO v1.2.1: essential
+web developer,use markup languages,essential,ESCO v1.2.1: essential
+web developer,use software design patterns,essential,ESCO v1.2.1: essential
+web developer,use software libraries,essential,ESCO v1.2.1: essential
+web developer,web based collaborative platforms,essential,ESCO v1.2.1: essential
+web developer,web programming,essential,ESCO v1.2.1: essential
+web developer,web services,essential,ESCO v1.2.1: essential
+web developer,World Wide Web Consortium standards,essential,ESCO v1.2.1: essential
+web developer,ABAP,optional,ESCO v1.2.1: optional
+web developer,adapt to changes in technological development plans,optional,ESCO v1.2.1: optional
+web developer,AJAX,optional,ESCO v1.2.1: optional
+web developer,Ansible,optional,ESCO v1.2.1: optional
+web developer,Apache Maven,optional,ESCO v1.2.1: optional
+web developer,APL,optional,ESCO v1.2.1: optional
+web developer,ASP.NET,optional,ESCO v1.2.1: optional
+web developer,Assembly (computer programming),optional,ESCO v1.2.1: optional
+web developer,augmented reality,optional,ESCO v1.2.1: optional
+web developer,C#,optional,ESCO v1.2.1: optional
+web developer,C++,optional,ESCO v1.2.1: optional
+web developer,COBOL,optional,ESCO v1.2.1: optional
+web developer,CoffeeScript,optional,ESCO v1.2.1: optional
+web developer,Common Lisp,optional,ESCO v1.2.1: optional
+web developer,compose description for web elements,optional,ESCO v1.2.1: optional
+web developer,conduct content quality assurance,optional,ESCO v1.2.1: optional
+web developer,CSS,optional,ESCO v1.2.1: optional
+web developer,design user interface,optional,ESCO v1.2.1: optional
+web developer,develop creative ideas,optional,ESCO v1.2.1: optional
+web developer,Eclipse (integrated development environment software),optional,ESCO v1.2.1: optional
+web developer,Erlang,optional,ESCO v1.2.1: optional
+web developer,Groovy,optional,ESCO v1.2.1: optional
+web developer,Haskell,optional,ESCO v1.2.1: optional
+web developer,IBM WebSphere,optional,ESCO v1.2.1: optional
+web developer,ICT security legislation,optional,ESCO v1.2.1: optional
+web developer,implement anti-virus software,optional,ESCO v1.2.1: optional
+web developer,Java (computer programming),optional,ESCO v1.2.1: optional
+web developer,JavaScript,optional,ESCO v1.2.1: optional
+web developer,JavaScript Framework,optional,ESCO v1.2.1: optional
+web developer,Jenkins (tools for software configuration management),optional,ESCO v1.2.1: optional
+web developer,JSSS,optional,ESCO v1.2.1: optional
+web developer,KDevelop,optional,ESCO v1.2.1: optional
+web developer,LESS,optional,ESCO v1.2.1: optional
+web developer,Lisp,optional,ESCO v1.2.1: optional
+web developer,MATLAB,optional,ESCO v1.2.1: optional
+web developer,Microsoft Visual C++,optional,ESCO v1.2.1: optional
+web developer,migrate existing data,optional,ESCO v1.2.1: optional
+web developer,ML (computer programming),optional,ESCO v1.2.1: optional
+web developer,object-oriented modelling,optional,ESCO v1.2.1: optional
+web developer,Objective-C,optional,ESCO v1.2.1: optional
+web developer,OpenEdge Advanced Business Language,optional,ESCO v1.2.1: optional
+web developer,Pascal (computer programming),optional,ESCO v1.2.1: optional
+web developer,Perl,optional,ESCO v1.2.1: optional
+web developer,PHP,optional,ESCO v1.2.1: optional
+web developer,Prolog (computer programming),optional,ESCO v1.2.1: optional
+web developer,Puppet (tools for software configuration management),optional,ESCO v1.2.1: optional
+web developer,Python (computer programming),optional,ESCO v1.2.1: optional
+web developer,R,optional,ESCO v1.2.1: optional
+web developer,Ruby (computer programming),optional,ESCO v1.2.1: optional
+web developer,Salt (tools for software configuration management),optional,ESCO v1.2.1: optional
+web developer,SAP R3,optional,ESCO v1.2.1: optional
+web developer,SAS language,optional,ESCO v1.2.1: optional
+web developer,Sass,optional,ESCO v1.2.1: optional
+web developer,Scala,optional,ESCO v1.2.1: optional
+web developer,Scratch (computer programming),optional,ESCO v1.2.1: optional
+web developer,Smalltalk (computer programming),optional,ESCO v1.2.1: optional
+web developer,software anomalies,optional,ESCO v1.2.1: optional
+web developer,SPARK,optional,ESCO v1.2.1: optional
+web developer,STAF,optional,ESCO v1.2.1: optional
+web developer,Swift (computer programming),optional,ESCO v1.2.1: optional
+web developer,TypeScript,optional,ESCO v1.2.1: optional
+web developer,use automatic programming,optional,ESCO v1.2.1: optional
+web developer,use concurrent programming,optional,ESCO v1.2.1: optional
+web developer,use functional programming,optional,ESCO v1.2.1: optional
+web developer,use logic programming,optional,ESCO v1.2.1: optional
+web developer,use object-oriented programming,optional,ESCO v1.2.1: optional
+web developer,use presentation software,optional,ESCO v1.2.1: optional
+web developer,use query languages,optional,ESCO v1.2.1: optional
+web developer,use word processing software,optional,ESCO v1.2.1: optional
+web developer,utilise computer-aided software engineering tools,optional,ESCO v1.2.1: optional
+web developer,VBScript,optional,ESCO v1.2.1: optional
+web developer,Visual Basic,optional,ESCO v1.2.1: optional
+web developer,web application security threats,optional,ESCO v1.2.1: optional
+web developer,WebCMS,optional,ESCO v1.2.1: optional
+web developer,WildFly,optional,ESCO v1.2.1: optional
+web developer,WordPress,optional,ESCO v1.2.1: optional
+web developer,Xcode,optional,ESCO v1.2.1: optional
