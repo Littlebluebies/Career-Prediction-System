@@ -1,0 +1,8 @@
+esco_uri,preferred_label,decision,career_family_code,reason
+http://data.europa.eu/esco/occupation/c40a2919-48a9-40ea-b506-1f34f693496d,web developer,include,CF10,"Matches targets 'Web Developer' and 'Web Application Developer' (DATASET_SPEC §38)"
+http://data.europa.eu/esco/occupation/866c7813-2c03-47d7-9bdc-192cfbace57c,user interface developer,include,CF10,"altLabel 'front end developer' matches target 'Front-end Developer'"
+http://data.europa.eu/esco/occupation/96e20037-0a25-4bf6-a25e-808d1605d890,user interface designer,include,CF11,"Matches UI part of target 'UI/UX Designer'"
+http://data.europa.eu/esco/occupation/faed411a-f920-4100-86a8-b877928b429c,user experience analyst,include,CF11,"Matches UX part of target 'UI/UX Designer'"
+http://data.europa.eu/esco/occupation/30ed83ba-cc89-4d9f-a59d-5c783c1da56e,web designer,include,CF11,"altLabel 'ux designer' matches target 'UI/UX Designer'"
+http://data.europa.eu/esco/occupation/8cb59bc4-1f39-477e-beea-effed12d186c,technical communicator,exclude,,"altLabel 'user experience designer' matches, but the core function is technical documentation (DATASET_SPEC §7.2)"
+http://data.europa.eu/esco/occupation/781a6350-e686-45b9-b075-e4c8d5a05ff7,cloud software developer,exclude,,"altLabel 'full stack cloud software engineer' is a cloud engineering role, not web full-stack (DATASET_SPEC §7.2)"

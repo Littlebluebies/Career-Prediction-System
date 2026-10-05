@@ -1,0 +1,8 @@
+entity,alias,reason,owners
+skill,adobe photoshop elements,points to more than one skill,Adobe Photoshop; graphics editor software
+skill,autodesk sketchbook pro,points to more than one skill,SketchBook Pro; graphics editor software
+skill,cascading style sheets,points to more than one skill,CSS; style sheet languages
+skill,cobol,equals a canonical skill name,COBOL
+skill,css,equals a canonical skill name,style sheet languages
+skill,sparql,equals a canonical skill name,resource description framework query language
+skill,visual basic,equals a canonical skill name,computer programming

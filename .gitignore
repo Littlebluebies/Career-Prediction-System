@@ -35,3 +35,7 @@ logs/
 *.backup
 *.bak
 *.sql.gz
+
+# --- Full standard-source downloads (ADR 0010 §5) ---
+# Re-downloadable; version + SHA-256 recorded in datasets/metadata/
+datasets/raw/esco/
