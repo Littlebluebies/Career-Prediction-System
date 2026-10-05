@@ -15,6 +15,10 @@
 Dockerfile*   text eol=lf
 .env.example  text eol=lf
 
+# --- Always LF (generated datasets: same bytes on every OS, ADR 0010 §14) ---
+*.csv                     text eol=lf
+datasets/metadata/*.json  text eol=lf
+
 # --- Binary: never convert, never diff as text ---
 *.pdf   binary
 *.doc   binary
