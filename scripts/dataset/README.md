@@ -22,7 +22,7 @@ PostgreSQL (career_system)
 
 | ไฟล์ | หน้าที่ |
 | --- | --- |
-| `common.py` | ค่าที่ใช้ร่วมกัน: เวอร์ชัน ESCO / Dataset, Path, หมวดหมู่ที่อนุญาต, Career Family 15 กลุ่ม (`DATABASE.md` §19) |
+| `common.py` | ค่าที่ใช้ร่วมกัน: เวอร์ชัน ESCO / Dataset, Path, หมวดหมู่ที่อนุญาต, Career Family 15 กลุ่ม (`DATABASE.md` §19), ชื่อสาขาทางการ (ADR 0010 §18) |
 | `build_esco_reference.py` | Raw ESCO -> ค้นหา Candidate -> ใช้ผลคัดเลือกของผู้วิจัย -> Occupation, Skill, Alias, Relation, หมวดหมู่ -> Processed CSV + Metadata |
 | `validate.py` | Data Quality Checks (`DATASET_SPEC.md` §32-35) พิมพ์ `PASS` / `FAIL` ทีละข้อ ล้มเหลว = exit code 1 |
 | `import.py` | รัน `validate.py` ก่อน ถ้าผ่านจึงสร้าง Reference Seed SQL |

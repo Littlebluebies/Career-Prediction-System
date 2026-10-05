@@ -139,8 +139,20 @@ SELECT pg_temp.check(
     AND NOT EXISTS (SELECT 1 FROM career_family WHERE description LIKE 'DEMO%'),
     'REF no DEMO / TEST DATA in the reference database');
 
+-- =============================================================
+-- Majors: official names (ADR 0010 §18, convention ADR 0009 §2-3)
+-- =============================================================
+
 SELECT pg_temp.check(
-    (SELECT count(*) FROM major) = 0,
-    'REF no majors yet (official names pending, ADR 0010 §7)');
+    (SELECT count(*) FROM major) = 5 AND (SELECT count(DISTINCT branch_name) FROM major) = 4,
+    'REF 5 majors in 4 official faculty branches');
+
+SELECT pg_temp.check(
+    (SELECT count(*) FROM major WHERE branch_name = 'ครีเอทีฟมีเดียเทคโนโลยี') = 2,
+    'REF Creative Media Technology has one row per track (web, game)');
+
+SELECT pg_temp.check(
+    NOT EXISTS (SELECT 1 FROM major WHERE branch_name LIKE 'สาขาวิชา%'),
+    'REF branch_name has no "สาขาวิชา" prefix (ADR 0009 §3)');
 
 ROLLBACK;

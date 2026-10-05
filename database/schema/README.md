@@ -13,4 +13,4 @@ Schema Documentation ของ Database (DATABASE_MIGRATION_PLAN §5)
 | ไฟล์ | ทดสอบ |
 | --- | --- |
 | `tests.sql` | Migration, Constraint, Foreign Key, Cascade และกติกาของ Development Seed (รอบที่ 1) |
-| `tests_reference.sql` | Reference Seed: จำนวนตรงกับ `dataset_version`, ESCO URI, importance / demand เป็น NULL, Alias, ไม่ปน DEMO (รอบที่ 2, ADR 0010) |
+| `tests_reference.sql` | Reference Seed: จำนวนตรงกับ `dataset_version`, ESCO URI, importance / demand เป็น NULL, Alias, ไม่ปน DEMO, ชื่อสาขาทางการ (รอบที่ 2, ADR 0010) |

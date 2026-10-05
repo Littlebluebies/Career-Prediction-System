@@ -24,8 +24,8 @@ import sys
 from pathlib import Path
 
 import validate
-from common import (CAREER_FAMILIES, DATASET_VERSION, METADATA_DATASETS, SEED_REFERENCE,
-                    metadata_path, rel)
+from common import (CAREER_FAMILIES, DATASET_VERSION, MAJORS, METADATA_DATASETS,
+                    SEED_REFERENCE, metadata_path, rel)
 
 HEADER = """-- =============================================================
 -- {file} — REFERENCE DATA (ESCO pilot, dataset version {version})
@@ -46,6 +46,12 @@ def q(value: str | None) -> str:
 
 def values(rows: list[tuple]) -> str:
     return ",\n".join("    (" + ", ".join(q(v) for v in row) + ")" for row in rows)
+
+
+def major_sql() -> str:
+    # official names from common.MAJORS (ADR 0010 §18); context only, never a filter
+    return ("INSERT INTO major (branch_name, major_name) VALUES\n"
+            + values(MAJORS) + "\nON CONFLICT (branch_name, major_name) DO NOTHING;\n")
 
 
 def career_family_sql() -> str:
@@ -125,6 +131,7 @@ def main() -> None:
 
     print("\nStep 2/2: generate reference seed SQL")
     # file number = load order: parents before children (foreign keys)
+    write(SEED_REFERENCE / "00_major.seed.sql", major_sql())
     write(SEED_REFERENCE / "01_career_family.seed.sql", career_family_sql())
     write(SEED_REFERENCE / "02_skill.seed.sql", skill_sql(data["skill"], data["skill_alias"]))
     write(SEED_REFERENCE / "03_occupation.seed.sql", occupation_sql(data["occupation"], data["occupation_alias"]))

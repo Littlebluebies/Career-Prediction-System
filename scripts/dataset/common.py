@@ -52,6 +52,18 @@ CAREER_FAMILIES = [
     ("CF15", "Game Art & Animation"),
 ]
 
+# Official faculty branches and tracks (branch_name, major_name), confirmed by
+# the project owner on 2026-10-05 (ADR 0010 §7, §18). Convention (ADR 0009 §2-3):
+# no "สาขาวิชา" prefix; a branch without tracks repeats its name as major_name;
+# Creative Media Technology has one row per track.
+MAJORS = [
+    ("เทคโนโลยีการผลิตภาพยนตร์และวิทยุโทรทัศน์", "เทคโนโลยีการผลิตภาพยนตร์และวิทยุโทรทัศน์"),
+    ("เทคโนโลยีการโฆษณาและประชาสัมพันธ์", "เทคโนโลยีการโฆษณาและประชาสัมพันธ์"),
+    ("เทคโนโลยีการพิมพ์ดิจิทัลและบรรจุภัณฑ์", "เทคโนโลยีการพิมพ์ดิจิทัลและบรรจุภัณฑ์"),
+    ("ครีเอทีฟมีเดียเทคโนโลยี", "เทคโนโลยีการพัฒนาเว็บไซต์ฟูลสแต็ก"),
+    ("ครีเอทีฟมีเดียเทคโนโลยี", "เทคโนโลยีการพัฒนาเกมดิจิทัล"),
+]
+
 # Processed files and metadata of this dataset version (ADR 0006)
 FILES = {
     "candidates": PROCESSED / "occupation" / "esco_candidates.csv",
