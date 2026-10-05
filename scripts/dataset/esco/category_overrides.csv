@@ -1,0 +1,34 @@
+skill_name,category,reason
+Adobe Photoshop,SOFTWARE_TOOL,Named software product
+Adobe Illustrator,SOFTWARE_TOOL,Named software product
+GIMP (graphics editor software),SOFTWARE_TOOL,Named software product
+Microsoft Visio,SOFTWARE_TOOL,Named software product
+SketchBook Pro,SOFTWARE_TOOL,Named software product
+Synfig,SOFTWARE_TOOL,Named software product
+Eclipse (integrated development environment software),SOFTWARE_TOOL,Named software product
+Microsoft Visual C++,SOFTWARE_TOOL,Named software product
+KDevelop,SOFTWARE_TOOL,Named software product
+Xcode,SOFTWARE_TOOL,Named software product
+Ansible,SOFTWARE_TOOL,Named software product
+Apache Maven,SOFTWARE_TOOL,Named software product
+Jenkins (tools for software configuration management),SOFTWARE_TOOL,Named software product
+Puppet (tools for software configuration management),SOFTWARE_TOOL,Named software product
+Salt (tools for software configuration management),SOFTWARE_TOOL,Named software product
+Vagrant,SOFTWARE_TOOL,Named software product
+STAF,SOFTWARE_TOOL,Named software product
+IBM WebSphere,SOFTWARE_TOOL,Named software product
+WildFly,SOFTWARE_TOOL,Named software product
+SAP R3,SOFTWARE_TOOL,Named software product
+Joomla,SOFTWARE_TOOL,Named software product
+Drupal,SOFTWARE_TOOL,Named software product
+WordPress,SOFTWARE_TOOL,Named software product
+graphics editor software,SOFTWARE_TOOL,Class of application software
+integrated development environment software,SOFTWARE_TOOL,Class of application software
+tools for software configuration management,SOFTWARE_TOOL,Class of application software
+ICT debugging tools,SOFTWARE_TOOL,Class of application software
+web based collaborative platforms,SOFTWARE_TOOL,Class of application software
+software UI design patterns,DESIGN,Interaction and user-experience design knowledge (DATASET_SPEC §8.3)
+human-computer interaction,DESIGN,Interaction and user-experience design knowledge (DATASET_SPEC §8.3)
+software interaction design,DESIGN,Interaction and user-experience design knowledge (DATASET_SPEC §8.3)
+application usability,DESIGN,Interaction and user-experience design knowledge (DATASET_SPEC §8.3)
+natural language processing,TECHNICAL,Computing technology listed under ESCO languages group
