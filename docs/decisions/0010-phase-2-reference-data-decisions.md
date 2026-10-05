@@ -60,4 +60,15 @@
 14. **Pipeline (`scripts/dataset/`, ชื่อไฟล์ตาม `FOLDER_STRUCTURE.md` §24 และ `DATASET_SPEC.md` §55 ที่อนุญาตให้ตั้งชื่อตาม Stack):** `build_esco_reference.py` (Raw -> Processed + Metadata), `validate.py` (Data Quality Checks ตาม `DATASET_SPEC.md` §32-35), `import.py` (ตรวจด้วย `validate.py` แล้วสร้าง Reference Seed SQL), `common.py` (ค่า Version, Path และค่าที่อนุญาตที่ใช้ร่วมกัน) ผลลัพธ์ต้องเหมือนเดิมทุกครั้งที่รันซ้ำ (Deterministic) ส่วน `validate.py` สร้างใน Phase 2 เร็วกว่าที่ ADR 0006 ข้อ 7 ระบุ (Phase 3) เพราะต้องตรวจข้อมูลก่อนนำเข้า
 15. **การนำเข้า: สร้างไฟล์ SQL แทนการเขียนลง Database ตรง** `import.py` สร้าง `database/seed/reference/NN_<table>.seed.sql` (Commit เข้า Git, ห้ามแก้ด้วยมือ) และโหลดด้วย `scripts/database/seed.sh reference` ใน Transaction เดียว เหตุผล: Python ใช้ Standard Library ได้ต่อ (ไม่ต้องมี Database Driver), ข้อมูลที่เข้า Database ตรวจได้ใน Git, ใช้ `seed.sh` และ `ON CONFLICT DO NOTHING` แบบเดียวกับ Phase 1 Metadata แปลงลง `dataset_version` ตาม ADR 0006 ข้อ 5 (`processed_at` เว้นว่างเพราะไม่มีในตารางแปลง)
 16. **แยกข้อมูล DEMO กับ Reference (`DATASET_SPEC.md` §56):** `seed.sh` และ `reset.sh` รับโหมด `development` (ค่าเริ่มต้น) หรือ `reference` และ `seed.sh` หยุดถ้า Database มีข้อมูลของอีกโหมดอยู่แล้ว `test.sh` ทดสอบทั้ง 2 โหมดบน Test Database ใหม่แต่ละรอบ (`database/schema/tests_reference.sql`)
-17. **Career Family ใน Reference Seed:** ใส่ครบ 15 กลุ่มตาม `DATABASE.md` §19 (Initial Framework) ส่วน Occupation มีเฉพาะ CF10 / CF11 ตามข้อ 2 ส่วนตาราง `major` ยังว่างใน Reference Seed จนกว่าจะได้ชื่อสาขาทางการ (ข้อ 7)
+17. **Career Family ใน Reference Seed:** ใส่ครบ 15 กลุ่มตาม `DATABASE.md` §19 (Initial Framework) ส่วน Occupation มีเฉพาะ CF10 / CF11 ตามข้อ 2 ส่วนตาราง `major` ดูข้อ 18
+18. **ชื่อสาขาทางการ (ปิดข้อ 7):** เจ้าของโครงการยืนยันชื่อทางการเมื่อ 2026-10-05 Reference Seed มี 5 แถว (`database/seed/reference/00_major.seed.sql` สร้างจาก `MAJORS` ใน `scripts/dataset/common.py`) คงรูปแบบ ADR 0009 ข้อ 2-3 (ไม่มีคำนำหน้า "สาขาวิชา", สาขาที่ไม่มีวิชาเอกใช้ชื่อสาขาเป็น `major_name`) ส่วนวิชาเอกของครีเอทีฟมีเดียเทคโนโลยีใช้ชื่อภาษาไทยทางการ
+
+    | `branch_name` | `major_name` |
+    | --- | --- |
+    | เทคโนโลยีการผลิตภาพยนตร์และวิทยุโทรทัศน์ | (ชื่อเดียวกับสาขา) |
+    | เทคโนโลยีการโฆษณาและประชาสัมพันธ์ | (ชื่อเดียวกับสาขา) |
+    | เทคโนโลยีการพิมพ์ดิจิทัลและบรรจุภัณฑ์ | (ชื่อเดียวกับสาขา) |
+    | ครีเอทีฟมีเดียเทคโนโลยี | เทคโนโลยีการพัฒนาเว็บไซต์ฟูลสแต็ก (Web Full Stack) |
+    | ครีเอทีฟมีเดียเทคโนโลยี | เทคโนโลยีการพัฒนาเกมดิจิทัล (Game Development) |
+
+    Development Seed (DEMO) ไม่แก้ ยังใช้ `Web Full Stack` / `Game Development` ตามเดิม
