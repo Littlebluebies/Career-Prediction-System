@@ -24,7 +24,7 @@
     | --- | --- | --- |
     | `node (api)`, `node (web)` | Node ตาม `.nvmrc` -> `npm ci` -> `npm run lint` -> `npm run typecheck` -> `npm run build` | ENV §46-48, ADR 0008 (lockfile) |
     | `dataset` | Python 3.13 -> `compileall` ของ `services/ai` และ `scripts/dataset` -> `validate.py` -> `import.py` -> `git status --porcelain` ต้องว่าง | ENV §46 (Syntax Check), DATASET_SPEC §32-35, ADR 0010 §14-15 |
-    | `database` | `cp .env.example .env` -> `docker compose up -d --wait postgres` -> `bash scripts/database/test.sh` | MIG §51, §61, ENV §50 |
+    | `database` | (เฉพาะ PR) Migration เดิมต้องไม่ถูกแก้ -> `cp .env.example .env` -> `docker compose up -d --wait postgres` -> `bash scripts/database/test.sh` | MIG §7, §51, §61, ENV §50 |
     | `docker` | `docker compose up -d --build --wait` -> เรียก Backend `/health` ซ้ำจนกว่า `data.status` = `ok` -> `docker compose logs` เมื่อ Fail | ENV §48-49, §39-40 |
 
     รายละเอียดที่ตั้งใจ:
@@ -52,6 +52,7 @@
 9. **ลำดับการ Merge:** `feature/ci` -> `develop` -> `main` ให้เสร็จและตั้ง Branch Protection ก่อน แล้วจึงแตก Branch ของ Phase 3 จาก `develop` ที่มี CI แล้ว
 10. **CI ต้องโตไปพร้อมกับ Phase:** PR ที่เพิ่ม Script, Test หรือ Dataset ใหม่ ต้องเพิ่มการตรวจใน `ci.yml` ใน PR เดียวกัน และระบุในรายงาน Phase (`CLAUDE.md` §11)
 11. **ช่องโหว่ของ Dependency: แจ้งเตือน ไม่ขวาง Merge** CI ไม่รัน `npm audit` เพราะฐานข้อมูลช่องโหว่เปลี่ยนได้ทุกวัน CI จะแดงขึ้นมาเองโดยไม่มีใครแก้โค้ด และเมื่อมี Branch Protection (ข้อ 8) จะ Merge อะไรไม่ได้ ให้เปิด **Dependabot alerts** ใน Settings ของ GitHub (เฉพาะ Alerts ไม่เปิด Version Updates ที่สร้าง PR อัปเกรดเอง) แล้วแก้เป็นเรื่องๆ ด้วย `npm audit fix` แบบไม่ใช้ `--force` (อัปเดตเฉพาะ `package-lock.json` ภายในช่วง Version ของ `package.json` ไม่ข้าม Major ตาม ADR 0008) โดยให้ CI ตรวจผลการอัปเดต ครั้งแรก (2026-10-07): `source-map-js` (High, GHSA-68fv-2mgg-jv7q) ซึ่งมากับ `next` -> `postcss` ใน `apps/web`
+12. **Migration ที่มีอยู่แล้วห้ามถูกแก้ (MIG §7):** Checksum ใน `schema_migrations` ป้องกันได้เฉพาะ Database ที่เคย Apply แล้ว แต่ CI สร้าง Database ใหม่ทุกครั้ง จึงจับการแก้ไฟล์เดิมไม่ได้ Job `database` จึงเทียบ PR กับ Base Branch (`git diff --diff-filter=a` ระหว่าง Merge Commit กับ Parent แรก) ถ้าไฟล์ `database/migrations/*.sql` เดิมถูกแก้ ลบ หรือเปลี่ยนชื่อ ให้ Fail เพิ่มไฟล์ใหม่ได้เท่านั้น ตรวจเฉพาะ Pull Request เพราะ Push เข้า `develop` / `main` ผ่าน PR ที่ตรวจแล้ว (เจ้าของโครงการเลือก 2026-10-07)
 
 ## เหตุผล
 
