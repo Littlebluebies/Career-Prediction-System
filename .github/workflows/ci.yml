@@ -1,0 +1,67 @@
+# =============================================================
+# ci.yml — Continuous Integration (no CD; deployment is Phase 13)
+# Decisions: docs/decisions/0011-continuous-integration.md
+#
+# Rules (ADR 0011 §6): no external API calls, no real secrets,
+# no large model downloads, synthetic fixtures only.
+# Logs of this public repository are public.
+# =============================================================
+name: CI
+
+on:
+  pull_request:
+    branches: [develop, main]
+  push:
+    branches: [develop, main]
+
+# Read-only token: CI only reads the code (ADR 0011 §5)
+permissions:
+  contents: read
+
+# A new push to the same branch / PR cancels the run that is still going
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ENVIRONMENT_SETUP §46-48: Lint, TypeScript Check, Build
+  # (Unit Tests are added when code exists, ADR 0011 §7)
+  node:
+    name: node (${{ matrix.app }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      # api failing must not cancel web: we want to see both results
+      fail-fast: false
+      matrix:
+        app: [api, web]
+    defaults:
+      run:
+        working-directory: apps/${{ matrix.app }}
+    env:
+      # Same placeholder value as .env.example; web inlines it at build time
+      NEXT_PUBLIC_API_BASE_URL: http://localhost:4000/api
+      # Next.js sends anonymous telemetry by default; CI makes no external calls
+      NEXT_TELEMETRY_DISABLED: "1"
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc          # 24 (ADR 0008)
+          cache: npm
+          cache-dependency-path: apps/${{ matrix.app }}/package-lock.json
+
+      # npm ci installs exactly what package-lock.json says and fails if
+      # package.json and the lockfile disagree (ADR 0008)
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build
