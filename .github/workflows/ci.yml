@@ -132,3 +132,56 @@ jobs:
       - name: PostgreSQL logs
         if: failure()
         run: docker compose logs postgres
+
+  # Whole system as in development (ENVIRONMENT_SETUP §39-40, §48-49):
+  # build all 4 images (installs requirements.txt = Python dependency check),
+  # start them, then ask the backend whether DB and AI service are reachable.
+  docker:
+    name: docker
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Create .env from .env.example
+        run: cp .env.example .env
+
+      # --wait: waits for healthchecks (postgres, ai-service); backend and
+      # frontend have no healthcheck, so --wait only waits for them to start
+      - name: Build and start all services
+        run: docker compose up -d --build --wait
+
+      # /health always answers HTTP 200 (status "degraded" when DB or AI is down),
+      # so check data.status in the body, and retry while the backend boots.
+      - name: Backend health reports status ok
+        run: |
+          for i in $(seq 1 30); do
+            body="$(curl -sS http://localhost:4000/health || true)"
+            if echo "$body" | jq -e '.data.status == "ok"' > /dev/null 2>&1; then
+              echo "OK: $body"
+              exit 0
+            fi
+            echo "attempt $i/30 not ready yet: ${body:-no response}"
+            sleep 2
+          done
+          echo "::error::Backend /health did not report status ok within 60 seconds"
+          exit 1
+
+      - name: Frontend responds
+        run: |
+          for i in $(seq 1 30); do
+            if curl -fsS -o /dev/null http://localhost:3000; then
+              echo "OK: frontend answered"
+              exit 0
+            fi
+            echo "attempt $i/30 frontend not ready yet"
+            sleep 2
+          done
+          echo "::error::Frontend did not answer within 60 seconds"
+          exit 1
+
+      - name: Container status and logs
+        if: failure()
+        run: |
+          docker compose ps -a
+          docker compose logs
