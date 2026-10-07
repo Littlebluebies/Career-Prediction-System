@@ -26,6 +26,7 @@
 | [0008](0008-runtime-and-dependency-versions.md) | Runtime (Node 24 / Python 3.13) และ Dependency Versions ที่ตรึงสำหรับ Phase 0 | Accepted |
 | [0009](0009-phase-1-database-decisions.md) | การตัดสินใจของ Phase 1: เครื่องมือทดสอบ, Convention ของ `major`, ชื่อสาขาใน Seed, Test Database | Accepted |
 | [0010](0010-phase-2-reference-data-decisions.md) | การตัดสินใจของ Phase 2: ESCO, ขอบเขต Pilot, `occupation_skill`, รูปแบบ Version, ข้อมูลดิบ, Python scripts, หมวดหมู่ Skill, Pipeline นำเข้า, แยก DEMO / Reference | Accepted |
+| [0011](0011-continuous-integration.md) | Continuous Integration ด้วย GitHub Actions: Job ที่ตรวจ, กติกาความปลอดภัย, Branch Protection, ยังไม่ทำ CD | Accepted |
 
 0001 ถึง 0006 ตัดสินโดยเจ้าของโครงการ (โครงสร้างหลัก) และ Claude (รายละเอียดที่เหลือ ตามคำสั่งให้แก้ความเสี่ยงโดยตรง) เจ้าของโครงการสั่งให้ดำเนินการต่อหลังตรวจว่าไม่ขัดกับชิ้นงาน (2026-09-20) และเปลี่ยนได้ก่อนเริ่มเขียนโค้ดส่วนที่เกี่ยวข้อง
 
@@ -50,6 +51,6 @@
 | C-11 | ที่เก็บ Evaluation Dataset | ไฟล์ใน `datasets/evaluation/` (ไม่เพิ่มตาราง) | Phase 12 |
 | C-12 | กติกาลำดับ Source of Truth และป้าย Draft กับ LOCKED | ตามหน้าที่: CLAUDE.md, TECH_STACK.md, DATABASE.md และตาราง `ENVIRONMENT_SETUP.md` §62 | ตอนประกาศ Freeze |
 | C-13 | ผลลัพธ์กรณีหลักฐานไม่เพียงพอ | ตอบสถานะสำเร็จพร้อมข้อความข้อจำกัด ไม่ใช้ Error | Phase 6, 9 |
-| C-14 | `datasets/raw/` ของ Job Posting เข้า Git หรือไม่ (แหล่งมาตรฐานตัดสินแล้วใน [0010](0010-phase-2-reference-data-decisions.md)), `LICENSE`, ขอบเขต Dataset Dashboard, อ้างอิง ARCHITECTURE.md ที่ไม่มี | ตัดสินตามเวลาที่เกี่ยวข้อง | ตามเวลา |
+| C-14 | `datasets/raw/` ของ Job Posting เข้า Git หรือไม่ (แหล่งมาตรฐานตัดสินแล้วใน [0010](0010-phase-2-reference-data-decisions.md); มีผลกับ Job `dataset` ของ CI ตาม [0011](0011-continuous-integration.md) ข้อ 7), `LICENSE`, ขอบเขต Dataset Dashboard, อ้างอิง ARCHITECTURE.md ที่ไม่มี | ตัดสินตามเวลาที่เกี่ยวข้อง | ตามเวลา |
 | C-15 | พารามิเตอร์วิจัย (แหล่งข้อมูล, น้ำหนัก, Threshold, Top-K, Evaluation Protocol) | กำหนดจากงานวิจัย | Phase 3, 7, 12 |
 | - | เวอร์ชัน Node.js และ Python ที่ตรึง (`ENVIRONMENT_SETUP.md` §7, §9) | ตรึงด้วย lockfile ตอนเริ่ม | Phase 0 |
