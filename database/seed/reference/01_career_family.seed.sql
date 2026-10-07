@@ -22,4 +22,3 @@ INSERT INTO career_family (family_code, family_name, description) VALUES
     ('CF14', 'Game Development & Technical', 'Initial candidate career family (DATABASE.md §19)'),
     ('CF15', 'Game Art & Animation', 'Initial candidate career family (DATABASE.md §19)')
 ON CONFLICT (family_code) DO NOTHING;
--- manual edit
