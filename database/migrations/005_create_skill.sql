@@ -29,3 +29,4 @@ CREATE TABLE skill (
             )
         )
 );
+-- manual edit
