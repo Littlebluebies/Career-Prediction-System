@@ -65,3 +65,44 @@ jobs:
 
       - name: Build
         run: npm run build
+
+  # Reference dataset: Python syntax check (ENVIRONMENT_SETUP §46),
+  # quality checks (DATASET_SPEC §32-35) and "the committed seed is up to date"
+  # (ADR 0010 §14-15). build_esco_reference.py is NOT run: it needs the raw
+  # ESCO download, which is not in Git (ADR 0010 §5).
+  dataset:
+    name: dataset
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"            # ADR 0008 (on Windows: py -3.13)
+
+      # Compiles every .py file without running it; a syntax error fails the job.
+      # -x skips a local virtualenv (only exists on a developer machine).
+      - name: Python syntax check
+        run: python -m compileall -q -x '[\\/]\.venv[\\/]' services/ai scripts/dataset
+
+      - name: Validate processed dataset
+        run: python scripts/dataset/validate.py
+
+      # import.py validates again, then rewrites database/seed/reference/*.sql
+      - name: Regenerate reference seed
+        run: python scripts/dataset/import.py
+
+      # Any modified OR new (untracked) file means someone changed the dataset
+      # or import.py without committing the regenerated seed.
+      # git diff --exit-code alone would miss new untracked files.
+      - name: Committed files must match the regenerated ones
+        run: |
+          changes="$(git status --porcelain)"
+          if [ -n "$changes" ]; then
+            echo "::error::Generated files differ from the repository. Run 'py -3.13 scripts/dataset/import.py' and commit the result."
+            echo "$changes"
+            git --no-pager diff --stat
+            exit 1
+          fi
+          echo "Reference seed is up to date."
