@@ -51,6 +51,7 @@
 8. **Branch Protection:** `develop` และ `main` ต้องผ่าน Required Checks ทั้ง 5 (`node (api)`, `node (web)`, `dataset`, `database`, `docker`) ก่อน Merge ตั้งค่าหลังจาก Workflow รันผ่านอย่างน้อยหนึ่งครั้ง (GitHub จะให้เลือกได้เฉพาะ Check ที่เคยรันแล้ว)
 9. **ลำดับการ Merge:** `feature/ci` -> `develop` -> `main` ให้เสร็จและตั้ง Branch Protection ก่อน แล้วจึงแตก Branch ของ Phase 3 จาก `develop` ที่มี CI แล้ว
 10. **CI ต้องโตไปพร้อมกับ Phase:** PR ที่เพิ่ม Script, Test หรือ Dataset ใหม่ ต้องเพิ่มการตรวจใน `ci.yml` ใน PR เดียวกัน และระบุในรายงาน Phase (`CLAUDE.md` §11)
+11. **ช่องโหว่ของ Dependency: แจ้งเตือน ไม่ขวาง Merge** CI ไม่รัน `npm audit` เพราะฐานข้อมูลช่องโหว่เปลี่ยนได้ทุกวัน CI จะแดงขึ้นมาเองโดยไม่มีใครแก้โค้ด และเมื่อมี Branch Protection (ข้อ 8) จะ Merge อะไรไม่ได้ ให้เปิด **Dependabot alerts** ใน Settings ของ GitHub (เฉพาะ Alerts ไม่เปิด Version Updates ที่สร้าง PR อัปเกรดเอง) แล้วแก้เป็นเรื่องๆ ด้วย `npm audit fix` แบบไม่ใช้ `--force` (อัปเดตเฉพาะ `package-lock.json` ภายในช่วง Version ของ `package.json` ไม่ข้าม Major ตาม ADR 0008) โดยให้ CI ตรวจผลการอัปเดต ครั้งแรก (2026-10-07): `source-map-js` (High, GHSA-68fv-2mgg-jv7q) ซึ่งมากับ `next` -> `postcss` ใน `apps/web`
 
 ## เหตุผล
 
@@ -72,4 +73,5 @@
 - ไฟล์ใหม่: `.github/workflows/ci.yml` (สร้างทีละ Job ตามข้อ 4: `node` -> `dataset` -> `database` -> `docker`)
 - `docs/decisions/README.md`: เพิ่มรายการ 0011 และระบุว่า C-14 มีผลกับ Job `dataset`
 - ตั้ง Branch Protection บน GitHub (ข้อ 8) ทำผ่านหน้า Settings ไม่มีไฟล์ใน Repository
+- เปิด Dependabot alerts (ข้อ 11) ทำผ่านหน้า Settings ไม่มีไฟล์ใน Repository
 - ไม่แก้เอกสาร Source of Truth และไม่เปลี่ยน Stack, Architecture หรือ Scope
