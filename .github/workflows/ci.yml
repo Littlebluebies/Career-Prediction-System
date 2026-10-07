@@ -117,6 +117,24 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v6
+        with:
+          # On a PR, HEAD is the merge commit; depth 2 also fetches its first
+          # parent (the tip of the base branch) for the immutability check below
+          fetch-depth: 2
+
+      # DATABASE_MIGRATION_PLAN §7: an applied migration is never edited.
+      # A fresh CI database cannot see this (no stored checksum to compare),
+      # so compare the PR with its base branch: new files only (ADR 0011 §12).
+      - name: Existing migrations are unchanged
+        if: github.event_name == 'pull_request'
+        run: |
+          changed="$(git diff --name-status --diff-filter=a HEAD^1 HEAD -- 'database/migrations/*.sql')"
+          if [ -n "$changed" ]; then
+            echo "::error::Existing migration files were modified, deleted or renamed. Add a new NNN_*.sql migration instead (DATABASE_MIGRATION_PLAN §7)."
+            echo "$changed"
+            exit 1
+          fi
+          echo "Only new migration files (or none) in this PR."
 
       # Placeholder values only (change_me); the container lives for this job only
       - name: Create .env from .env.example
