@@ -106,3 +106,29 @@ jobs:
             exit 1
           fi
           echo "Reference seed is up to date."
+
+  # Fresh database from the migration files (DATABASE_MIGRATION_PLAN §51, §61):
+  # migrate -> seed (development and reference) -> SQL tests, on a throw-away
+  # career_system_test database created and dropped by test.sh (ADR 0009 §4).
+  # reset.sh is not used: it waits for a typed confirmation.
+  database:
+    name: database
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+
+      # Placeholder values only (change_me); the container lives for this job only
+      - name: Create .env from .env.example
+        run: cp .env.example .env
+
+      # --wait returns when the postgres healthcheck (pg_isready) passes
+      - name: Start PostgreSQL
+        run: docker compose up -d --wait postgres
+
+      - name: Database tests
+        run: bash scripts/database/test.sh
+
+      - name: PostgreSQL logs
+        if: failure()
+        run: docker compose logs postgres
