@@ -33,6 +33,16 @@
 | Web Developer | `web developer`, `web application developer`, `web programmer` |
 | UI/UX / Web Designer | `ux ui designer`, `ui designer`, `ux designer`, `web designer` |
 
+### ผลค้นหาที่เป็นอาชีพอื่นใน Scope
+
+ค้นคำหนึ่งแล้วเจอตำแหน่งของอาชีพอื่นที่อยู่ในตารางข้างบน (เช่น ค้น `frontend developer` แล้วเจอ Full-stack หรือ Web Developer) **ให้เก็บด้วย**
+
+- ช่อง `search_keyword` ใส่คำที่ใช้ค้นจริง ไม่ต้องเปลี่ยนตามชื่อตำแหน่ง
+- อาชีพของ Posting ตัดสินจาก `job_title` และเนื้อหาในขั้น Occupation Mapping ไม่ใช่จากคำค้น
+- นับเป้าหมาย 30 ต่ออาชีพจากชื่อตำแหน่ง ไม่ใช่จากคำค้น
+- ไล่ผลค้นหา **ตามลำดับที่เว็บแสดง** แล้วเก็บทุกประกาศที่เข้าเกณฑ์ ไม่เลือกเฉพาะตัวที่น่าสนใจ (ลด Selection Bias)
+- ถ้าเจอประกาศที่เก็บไปแล้วจากคำค้นอื่น ข้ามไป
+
 ## 3. เกณฑ์คัดเข้า / คัดออก (DATASET_SPEC §12-13)
 
 เก็บเมื่อ:
