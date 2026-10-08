@@ -87,6 +87,29 @@
 
 Copy ข้อความตามต้นฉบับ ไม่ต้องจัดรูปแบบ ไม่ต้องแปล ขั้น Cleaning ทำโดย Script
 
+### ส่วนไหนของประกาศใส่ช่องไหน
+
+| ส่วนในประกาศ | ช่อง |
+| --- | --- |
+| หน้าที่ความรับผิดชอบ (Responsibilities, งานที่ต้องทำ) | `responsibilities` |
+| คุณสมบัติที่ต้องมี และ Bonus / Nice to have / Preferred (**Copy หัวข้อมาด้วย** เช่น `Bonus Points (Optional):`) | `requirements` |
+| ส่วนอื่นที่พูดถึงทักษะหรือเครื่องมือ เช่น Tech Stack ของทีม | `description` |
+| สวัสดิการ, เงินเดือน, ข้อมูลบริษัททั่วไป | ไม่เก็บ |
+
+หัวข้อที่ซ้ำกับชื่อช่อง (เช่น `Required Skills :-`) ไม่ต้อง Copy ถ้าประกาศไม่แบ่งหัวข้อเลย ใส่ทั้งหมดใน `description`
+หัวข้อ Bonus / Nice to have ต้องอยู่ในข้อความเสมอ ใช้แยกระดับ Requirement ในอนาคต (`DATASET_SPEC.md` §20)
+
+### ประกาศเดียวรับหลายตำแหน่ง
+
+ถ้าประกาศเดียวแยกคุณสมบัติตามตำแหน่ง (เช่น "For Frontend Developer: ..." และ "For Fullstack Developer: ...") ให้**แยกเป็นหลายแถว แถวละ 1 ตำแหน่ง** เพราะ 1 Posting ใน Dataset ผูกกับ 1 Occupation
+
+- `posting_ref` คนละรหัส, `source_url` / `company` / `date_collected` เหมือนกันทุกแถว
+- `job_title` ใช้ชื่อตำแหน่งตามหัวข้อย่อยในประกาศ (เช่น `Frontend Developer`)
+- `requirements` ของแต่ละแถว = ส่วนที่ใช้ร่วมกันทุกตำแหน่ง + ส่วนของตำแหน่งนั้นเท่านั้น + ส่วน Bonus / Nice to have (ถ้าใช้ร่วมกัน)
+- `notes` เขียน `split from multi-role posting; original title: <ชื่อหัวประกาศ>`
+
+ถ้าประกาศรับหลายตำแหน่งแต่ใช้คุณสมบัติชุดเดียวกัน ไม่ต้องแยก เก็บเป็นแถวเดียว และเขียนใน `notes` ว่า `multi-role posting, shared requirements`
+
 ## 5. ข้อมูลส่วนบุคคล (ห้ามเก็บ)
 
 ห้ามคัดลอก: ชื่อผู้ติดต่อ / HR, อีเมล, เบอร์โทร, LINE ID, ที่อยู่ละเอียด
