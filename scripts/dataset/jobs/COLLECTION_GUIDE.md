@@ -23,15 +23,29 @@
 | ช่วงเวลา | 2-4 สัปดาห์ จดวันเริ่มและวันสุดท้ายที่เก็บ |
 | เป้าหมาย | อย่างน้อย 30 Posting ต่ออาชีพ รวมประมาณ 150-250 |
 
-คำค้น (ใช้ชื่อตำแหน่งกว้างๆ ไม่ใช้ชื่อเทคโนโลยี เพื่อไม่ให้ผลเอียงไปทางเทคโนโลยีใดเทคโนโลยีหนึ่ง):
+คำค้น (ใช้ชื่อตำแหน่งกว้างๆ ไม่ใช้ชื่อเทคโนโลยี เพื่อไม่ให้ผลเอียงไปทางเทคโนโลยีใดเทคโนโลยีหนึ่ง) ใช้ตามลำดับในแต่ละกลุ่ม:
 
-| อาชีพ | คำค้น |
+| กลุ่มอาชีพ | คำค้น (ตามลำดับ) |
 | --- | --- |
-| Front-end / UI Developer | `frontend developer`, `front-end developer`, `ui developer` |
-| Back-end Developer | `backend developer`, `back-end developer` |
-| Full-stack Developer | `full stack developer`, `fullstack developer` |
+| Front-end | `frontend developer`, `front-end developer`, `ui developer` |
+| Back-end | `backend developer`, `back-end developer` |
+| Full-stack | `full stack developer`, `fullstack developer` |
 | Web Developer | `web developer`, `web application developer`, `web programmer` |
-| UI/UX / Web Designer | `ux ui designer`, `ui designer`, `ux designer`, `web designer` |
+| UI/UX + Web Designer | `ux ui designer`, `ui designer`, `ux designer`, `web designer` |
+
+### กฎหยุด (ADR 0012 ข้อ 10)
+
+ทำทีละกลุ่ม ทีละเว็บ (JobsDB แล้ว JobThai):
+
+1. ค้นคำแรกของกลุ่ม ไล่ผลตามลำดับ เก็บทุกประกาศที่เข้าเกณฑ์
+2. **หยุดกลุ่มนั้นในเว็บนั้น** เมื่อ
+   - ได้ประกาศที่ชื่อตำแหน่งตรงกับกลุ่มครบ **15** ประกาศจากเว็บนั้น หรือ
+   - ผลค้นหา **2 หน้าติดกัน** ไม่มีประกาศใหม่ที่เข้าเกณฑ์
+3. ถ้ายังไม่ถึง 15 และผลยังไม่หมด ใช้คำค้นถัดไปของกลุ่ม
+4. กลุ่มที่ครบแล้ว ถ้าเจออีกตอนค้นกลุ่มอื่น **ยังเก็บ** (15 คือจุดหยุดคำค้น ไม่ใช่เพดาน)
+5. กลุ่มที่ค้นจนหมดแล้วยังไม่ถึง 15 ให้จดจำนวนไว้ เป็นข้อมูล Bias
+
+`check_raw.py` แสดงตารางความคืบหน้าแยกกลุ่ม x เว็บให้
 
 ### ผลค้นหาที่เป็นอาชีพอื่นใน Scope
 
