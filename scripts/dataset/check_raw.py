@@ -57,6 +57,17 @@ ROUGH_OCCUPATION = [
 ]
 
 
+# Stopping rule (ADR 0012 §10): per occupation group and per source
+STOP_PER_SOURCE = 15
+PROGRESS_GROUPS = {
+    "Front-end": {"Front-end"},
+    "Back-end": {"Back-end"},
+    "Full-stack": {"Full-stack"},
+    "Web Developer": {"Web Developer"},
+    "UI/UX + Web Designer": {"UI/UX Designer", "Web Designer"},
+}
+
+
 def parse_date(text: str) -> date | None:
     if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", text):
         return None
@@ -200,6 +211,16 @@ def main() -> None:
     print("Rough occupation count (from titles, progress only):")
     for occ, n in Counter(rough_occupation(v["job_title"]) for v in active).most_common():
         print(f"  {occ:<16} {n}")
+    sources = sorted(SOURCES)
+    tally = Counter((rough_occupation(v["job_title"]), v["source"]) for v in active)
+    print(f"Stopping rule progress (target {STOP_PER_SOURCE} per group per source, ADR 0012 §10):")
+    print(f"  {'group':<22}" + "".join(f"{src:>12}" for src in sources))
+    for group, members in PROGRESS_GROUPS.items():
+        cells = []
+        for src in sources:
+            n = sum(tally[(m, src)] for m in members)
+            cells.append(f"{n:>3}/{STOP_PER_SOURCE}" + (" done" if n >= STOP_PER_SOURCE else "     "))
+        print(f"  {group:<22}" + "".join(f"{c:>12}" for c in cells))
     if excluded:
         print("Excluded:")
         for v in excluded:
