@@ -192,11 +192,13 @@ def main() -> None:
                 if "split from multi-role" not in v["notes"].lower():
                     warn(v["posting_ref"], "same URL as " + ", ".join(
                         g["posting_ref"] for g in group if g is not v) + " without a 'split from multi-role' note")
-    # Same company + same rough occupation + same URL looks like a level split (ADR 0012 §9)
+    # Same company + same rough occupation + same URL looks like a level split (ADR 0012 §9).
+    # "unclassified" is skipped: two different roles outside the rough patterns
+    # (e.g. Odoo Developer / Python Developer) are not the same occupation.
     for url, group in by_url.items():
         occupations = Counter(rough_occupation(v["job_title"]) for v in group)
         for occ, n in occupations.items():
-            if n > 1:
+            if n > 1 and occ != "unclassified":
                 warn(", ".join(v["posting_ref"] for v in group if rough_occupation(v["job_title"]) == occ),
                      f"one posting, {n} rows of the same occupation ({occ}): merge levels into one row (ADR 0012 §9)")
 
