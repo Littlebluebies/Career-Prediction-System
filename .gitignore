@@ -26,6 +26,9 @@ uploads/
 storage/
 temporary/
 
+# --- Playwright MCP output (snapshots/screenshots may show user data) ---
+.playwright-mcp/
+
 # --- Logs ---
 logs/
 *.log
