@@ -44,3 +44,6 @@ datasets/raw/esco/
 # Copyrighted source text, may contain personal data; never published.
 # Row count + SHA-256 recorded in datasets/metadata/
 datasets/raw/job_posting/
+
+# --- Local notes for AI handoff (never committed) ---
+*.local.md
