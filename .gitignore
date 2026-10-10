@@ -26,6 +26,9 @@ uploads/
 storage/
 temporary/
 
+# --- Playwright MCP output (snapshots/screenshots may show user data) ---
+.playwright-mcp/
+
 # --- Logs ---
 logs/
 *.log
@@ -39,3 +42,11 @@ logs/
 # --- Full standard-source downloads (ADR 0010 §5) ---
 # Re-downloadable; version + SHA-256 recorded in datasets/metadata/
 datasets/raw/esco/
+
+# --- Raw job postings (ADR 0012 §2) ---
+# Copyrighted source text, may contain personal data; never published.
+# Row count + SHA-256 recorded in datasets/metadata/
+datasets/raw/job_posting/
+
+# --- Local notes for AI handoff (never committed) ---
+*.local.md

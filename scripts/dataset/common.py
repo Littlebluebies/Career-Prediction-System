@@ -16,6 +16,7 @@ ESCO_VERSION = "v1.2.1"
 DOWNLOAD_DATE = "2026-10-05"           # date the ESCO package was downloaded
 DATASET_VERSION = "2026.01"            # ADR 0010 §4: YYYY.NN
 SOURCE_LABEL = f"ESCO {ESCO_VERSION}"  # value of occupation.source
+JOB_DATASET_VERSION = "2026.02"        # job posting dataset + release (ADR 0012 §8)
 
 # ---------------------------------------------------------------- paths
 ROOT = Path(__file__).resolve().parents[2]
@@ -24,6 +25,8 @@ CONFIG = Path(__file__).resolve().parent / "esco"
 PROCESSED = ROOT / "datasets" / "processed"
 METADATA = ROOT / "datasets" / "metadata"
 SEED_REFERENCE = ROOT / "database" / "seed" / "reference"
+JOB_RAW = ROOT / "datasets" / "raw" / "job_posting" / JOB_DATASET_VERSION   # not in Git (ADR 0012 §2)
+JOB_CONFIG = Path(__file__).resolve().parent / "jobs"
 
 # ---------------------------------------------------------------- allowed values
 # chk_skill_category (migration 005, DATABASE.md §15)
