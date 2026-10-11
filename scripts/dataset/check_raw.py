@@ -6,6 +6,8 @@ only references, column names and short matched fragments, so the output
 is safe to paste into a chat or a CI log.
 
 Rules: scripts/dataset/jobs/COLLECTION_GUIDE.md, ADR 0012, DATASET_SPEC §12-18
+check() is also used by clean.py, so the pipeline never runs on a file
+that fails these checks.
 
 Run from the repository root:  py -3.13 scripts/dataset/check_raw.py [path/to/file.csv]
 Exit code 0 = no errors (warnings allowed), 1 = at least one error.
@@ -18,6 +20,7 @@ import csv
 import re
 import sys
 from collections import Counter, defaultdict
+from dataclasses import dataclass, field
 from datetime import date
 from pathlib import Path
 
@@ -25,6 +28,9 @@ from common import JOB_CONFIG, JOB_RAW, rel
 
 TEMPLATE = JOB_CONFIG / "job_posting_template.csv"
 DEFAULT_FILE = JOB_RAW / "job_postings.csv"
+# posting_ref numbers that were never used, confirmed by the researcher.
+# A gap in the numbering that is not listed here is reported as a warning.
+UNUSED_REFS = JOB_CONFIG / "unused_refs.csv"
 
 SOURCES = {"JobsDB", "JobThai"}
 SEARCH_KEYWORDS = {  # COLLECTION_GUIDE.md §2
@@ -89,14 +95,30 @@ def rough_occupation(title: str) -> str:
     return "unclassified"
 
 
-def main() -> None:
-    path = Path(sys.argv[1]) if len(sys.argv) > 1 else DEFAULT_FILE
-    if not path.is_file():
-        print(f"ERROR: {path} not found (see COLLECTION_GUIDE.md §1)")
-        sys.exit(1)
+def load_unused_refs(path: Path = UNUSED_REFS) -> dict[str, str]:
+    """posting_ref -> reason, from jobs/unused_refs.csv."""
+    with path.open(encoding="utf-8", newline="") as f:
+        return {r["posting_ref"].strip(): r["reason"].strip() for r in csv.DictReader(f)}
 
-    errors: list[str] = []
-    warnings: list[str] = []
+
+@dataclass
+class RawCheck:
+    """Result of check(). Values in rows / active / excluded are stripped strings."""
+    rows: list[dict[str, str]] = field(default_factory=list)
+    active: list[dict[str, str]] = field(default_factory=list)
+    excluded: list[dict[str, str]] = field(default_factory=list)
+    unfilled: list[str] = field(default_factory=list)
+    errors: list[str] = field(default_factory=list)
+    warnings: list[str] = field(default_factory=list)
+
+
+def check(path: Path, unused_refs: dict[str, str] | None = None) -> RawCheck:
+    """Run every check on one raw file. Never raises for data problems:
+    they are returned in .errors / .warnings."""
+    result = RawCheck()
+    errors, warnings = result.errors, result.warnings
+    if unused_refs is None:
+        unused_refs = load_unused_refs()
 
     with TEMPLATE.open(encoding="utf-8", newline="") as f:
         expected = next(csv.reader(f))
@@ -105,10 +127,10 @@ def main() -> None:
         header = reader.fieldnames or []
         rows = list(reader)
     if header != expected:
-        print("ERROR: columns differ from job_posting_template.csv")
-        print("  missing:", [c for c in expected if c not in header])
-        print("  extra:  ", [c for c in header if c not in expected])
-        sys.exit(1)
+        errors.append("columns differ from job_posting_template.csv"
+                      f"  missing: {[c for c in expected if c not in header]}"
+                      f"  extra: {[c for c in header if c not in expected]}")
+        return result
 
     def err(ref: str, msg: str) -> None:
         errors.append(f"{ref:<9} {msg}")
@@ -116,19 +138,30 @@ def main() -> None:
     def warn(ref: str, msg: str) -> None:
         warnings.append(f"{ref:<9} {msg}")
 
-    value = {id(r): {k: (v or "").strip() for k, v in r.items()} for r in rows}
+    result.rows = [{k: (v or "").strip() for k, v in r.items()} for r in rows]
 
     # posting_ref: format and uniqueness (also for unfilled / excluded rows)
-    refs = Counter(value[id(r)]["posting_ref"] for r in rows)
+    refs = Counter(v["posting_ref"] for v in result.rows)
     for ref, n in refs.items():
         if not re.fullmatch(r"JP-\d{4}", ref):
             err(ref or "(empty)", "posting_ref is not JP-0000 format")
         if n > 1:
             err(ref, f"posting_ref used {n} times")
 
-    unfilled, excluded, active = [], [], []
-    for r in rows:
-        v = value[id(r)]
+    # Gaps in the numbering: rows must never be deleted (COLLECTION_GUIDE.md §4)
+    numbers = {int(ref[3:]) for ref in refs if re.fullmatch(r"JP-\d{4}", ref)}
+    if numbers:
+        for n in range(1, max(numbers)):
+            ref = f"JP-{n:04d}"
+            if n not in numbers and ref not in unused_refs:
+                warn(ref, "posting_ref is missing: restore the row with 'exclude: <reason>', "
+                          "or add it to jobs/unused_refs.csv if the number was never used")
+    for ref in sorted(unused_refs):
+        if ref in refs:
+            warn(ref, "listed in jobs/unused_refs.csv but the file has this row")
+
+    unfilled, excluded, active = result.unfilled, result.excluded, result.active
+    for v in result.rows:
         if not v["job_title"] and not v["source_url"]:
             unfilled.append(v["posting_ref"])
         elif v["notes"].lower().startswith("exclude:"):
@@ -201,10 +234,21 @@ def main() -> None:
             if n > 1 and occ != "unclassified":
                 warn(", ".join(v["posting_ref"] for v in group if rough_occupation(v["job_title"]) == occ),
                      f"one posting, {n} rows of the same occupation ({occ}): merge levels into one row (ADR 0012 §9)")
+    return result
 
-    # ---------------- report
+
+def main() -> None:
+    path = Path(sys.argv[1]) if len(sys.argv) > 1 else DEFAULT_FILE
+    if not path.is_file():
+        print(f"ERROR: {path} not found (see COLLECTION_GUIDE.md §1)")
+        sys.exit(1)
+
+    result = check(path)
+    rows, active, excluded = result.rows, result.active, result.excluded
+    warnings, errors = result.warnings, result.errors
+
     print(f"File: {rel(path) if path.is_relative_to(JOB_RAW.parents[3]) else path}")
-    print(f"Rows: {len(rows)}  active: {len(active)}  excluded: {len(excluded)}  not filled yet: {len(unfilled)}")
+    print(f"Rows: {len(rows)}  active: {len(active)}  excluded: {len(excluded)}  not filled yet: {len(result.unfilled)}")
     dates = sorted(v["date_collected"] for v in active if parse_date(v["date_collected"]))
     if dates:
         print(f"Collection period so far: {dates[0]} .. {dates[-1]}")
