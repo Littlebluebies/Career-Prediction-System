@@ -86,6 +86,11 @@ jobs:
       - name: Python syntax check
         run: python -m compileall -q -x '[\\/]\.venv[\\/]' services/ai scripts/dataset
 
+      # Job posting pipeline (Phase 3) on synthetic rows only: the raw postings
+      # are not in Git (ADR 0012 §2) and the repository is public (ADR 0011).
+      - name: Dataset script tests
+        run: python -m unittest discover -s scripts/dataset/tests -v
+
       - name: Validate processed dataset
         run: python scripts/dataset/validate.py
 

@@ -43,6 +43,36 @@ py -3.13 scripts/dataset/import.py
 bash scripts/database/reset.sh reference
 ```
 
+## Phase 3: Job Posting (กำลังพัฒนา)
+
+การตัดสินใจ: `docs/decisions/0012-phase-3-labour-market-decisions.md` วิธีเก็บ: `jobs/COLLECTION_GUIDE.md`
+
+```text
+datasets/raw/job_posting/2026.02/job_postings.csv   (เก็บเอง ไม่อยู่ใน Git)
+        │  check_raw.py   ตรวจไฟล์ + ความคืบหน้าตามกฎหยุด
+        │  clean.py       ทำความสะอาดในหน่วยความจำ (ไม่เขียนไฟล์)
+        │  dedup.py       หาคู่ที่น่าจะซ้ำ + ใช้คำตัดสินใน jobs/dedup_review.csv
+        ▼
+(ขั้นถัดไป: occupation mapping -> skill extraction -> demand)
+```
+
+| ไฟล์ | หน้าที่ |
+| --- | --- |
+| `check_raw.py` | ตรวจ Raw CSV: คอลัมน์, Field บังคับ, วันที่, URL, ข้อมูลส่วนบุคคล, แถวซ้ำ, รหัสขาดช่วง และแสดงตารางกฎหยุด (`check()` ใช้ร่วมกับ `clean.py`) |
+| `clean.py` | Cleaning (`DATASET_SPEC.md` §17): ช่องว่าง / bullet / บรรทัดว่าง, URL แบบ Canonical, จังหวัด + `work_mode`, ประเภทการจ้าง ไม่เปลี่ยนความหมายของข้อความ |
+| `dedup.py` | Deduplication (`DATASET_SPEC.md` §18): คู่ที่ข้อความ requirements + responsibilities คล้ายกัน >= 0.60 หรือมีข้อความยาวช่องใดตรงกันทุกตัวอักษร ต้องมีคำตัดสินใน `jobs/dedup_review.csv` กลุ่มที่ซ้ำเก็บ `posting_ref` ที่น้อยที่สุด |
+| `jobs/dedup_review.csv` | คำตัดสินของผู้วิจัยต่อคู่ (`duplicate` / `distinct`) พร้อมเหตุผล ถ้า `dedup.py` เจอคู่ใหม่จะหยุดและพิมพ์บรรทัดที่ต้องเพิ่ม |
+| `jobs/location_map.csv` | ชื่อพื้นที่ตามประกาศ -> จังหวัดภาษาอังกฤษ ถ้า `clean.py` เจอชื่อใหม่จะหยุดและให้เพิ่มแถว |
+| `jobs/unused_refs.csv` | `posting_ref` ที่ไม่เคยใช้ (ผู้วิจัยยืนยัน) รหัสที่ขาดช่วงแต่ไม่อยู่ในไฟล์นี้จะเป็น Warning |
+| `tests/` | Unit Test ด้วยข้อมูลสังเคราะห์ (CI รันทุก PR) |
+
+```bash
+py -3.13 scripts/dataset/check_raw.py
+py -3.13 scripts/dataset/clean.py                              # พิมพ์แค่จำนวน ไม่พิมพ์ข้อความประกาศ
+py -3.13 scripts/dataset/dedup.py                              # พิมพ์แค่รหัส แหล่ง และคะแนน
+py -3.13 -m unittest discover -s scripts/dataset/tests -v
+```
+
 ## กติกา
 
 - ห้ามแก้ไฟล์ใน `datasets/processed/`, `datasets/metadata/` และ `database/seed/reference/` ด้วยมือ ให้แก้ Config หรือ Script แล้วรันใหม่

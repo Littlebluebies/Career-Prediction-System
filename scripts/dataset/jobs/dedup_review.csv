@@ -1,0 +1,6 @@
+posting_ref,other_ref,decision,similarity,reason
+JP-0026,JP-0028,duplicate,0.994,"same company, job title and requirements; second job ID for another site (Samut Prakan / Pathum Thani); counted once (ADR 0012 §12)"
+JP-0034,JP-0037,duplicate,0.984,"same text and posting date under two company names (likely same recruiter or group); counted once (ADR 0012 §12)"
+JP-0025,JP-0052,distinct,0.639,"different company, province (Chon Buri / Bangkok) and date; JP-0052 (recruitment agency) does not name Siamrajathanee; similar wording of common full-stack duties"
+JP-0084,JP-0108,distinct,0.797,"different company, job title (Back-end / Front-end), posting date and tech stack; similar layout and wording only"
+JP-0109,JP-0113,duplicate,1.000,"same job title, location and text (identical requirements, responsibilities and description) under another company name and job ID (same company group); counted once (ADR 0012 §12)"

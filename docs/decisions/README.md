@@ -27,6 +27,7 @@
 | [0009](0009-phase-1-database-decisions.md) | การตัดสินใจของ Phase 1: เครื่องมือทดสอบ, Convention ของ `major`, ชื่อสาขาใน Seed, Test Database | Accepted |
 | [0010](0010-phase-2-reference-data-decisions.md) | การตัดสินใจของ Phase 2: ESCO, ขอบเขต Pilot, `occupation_skill`, รูปแบบ Version, ข้อมูลดิบ, Python scripts, หมวดหมู่ Skill, Pipeline นำเข้า, แยก DEMO / Reference | Accepted |
 | [0011](0011-continuous-integration.md) | Continuous Integration ด้วย GitHub Actions: Job ที่ตรวจ, กติกาความปลอดภัย, Branch Protection, ยังไม่ทำ CD | Accepted |
+| [0012](0012-phase-3-labour-market-decisions.md) | การตัดสินใจของ Phase 3: แหล่งและวิธีเก็บ Job Posting, Raw ไม่เข้า Git, Sampling Scope, Skill / Occupation ใหม่, การสกัด Skill, Demand, Release Version | Accepted |
 
 0001 ถึง 0006 ตัดสินโดยเจ้าของโครงการ (โครงสร้างหลัก) และ Claude (รายละเอียดที่เหลือ ตามคำสั่งให้แก้ความเสี่ยงโดยตรง) เจ้าของโครงการสั่งให้ดำเนินการต่อหลังตรวจว่าไม่ขัดกับชิ้นงาน (2026-09-20) และเปลี่ยนได้ก่อนเริ่มเขียนโค้ดส่วนที่เกี่ยวข้อง
 
@@ -45,12 +46,12 @@
 | C-05 | SUS: ใครคำนวณ เก็บรายข้อไหม และ Feedback ถูกลบพร้อม Session | Backend คำนวณ และกำหนดที่เก็บ Feedback ที่ไม่ถูกลบตาม Session | Phase 9-12 |
 | C-06 | ~~แถวใน `major` ของสาขาที่ไม่มี Sub-major~~ (ตัดสินแล้วใน [0009](0009-phase-1-database-decisions.md)) และวิธีดึงรายการ Major | `GET /majors` หรือ Config | Phase 9 |
 | C-07 | สเกลและรูปแบบแสดง Match Score | เก็บ 0-100 แสดงทศนิยม 1 ตำแหน่ง | Phase 7 |
-| C-08 | ~~รูปแบบ Version ของ Dataset~~ (ตัดสินแล้วใน [0010](0010-phase-2-reference-data-decisions.md)) และความหมายของ `dataset_version_id` / Algorithm Version | นิยาม Release ที่ครอบคลุมหลาย Dataset | Phase 3 |
+| C-08 | ~~รูปแบบ Version ของ Dataset~~ (ตัดสินแล้วใน [0010](0010-phase-2-reference-data-decisions.md)) ~~ความหมายของ `dataset_version_id`~~ (Release, ตัดสินแล้วใน [0012](0012-phase-3-labour-market-decisions.md)) และ Algorithm Version | Algorithm Version | Phase 7 |
 | C-09 | ที่เก็บคะแนนกลางทางและ Version ย่อย | Log หรือไฟล์ หรือรวมใน `algorithm_version` | Phase 7 |
 | C-10 | วิธีตัดสินป้าย Cross-Major | Config ที่ไม่บังคับ ไม่ใช้เป็น Filter | Phase 7-10 |
 | C-11 | ที่เก็บ Evaluation Dataset | ไฟล์ใน `datasets/evaluation/` (ไม่เพิ่มตาราง) | Phase 12 |
 | C-12 | กติกาลำดับ Source of Truth และป้าย Draft กับ LOCKED | ตามหน้าที่: CLAUDE.md, TECH_STACK.md, DATABASE.md และตาราง `ENVIRONMENT_SETUP.md` §62 | ตอนประกาศ Freeze |
 | C-13 | ผลลัพธ์กรณีหลักฐานไม่เพียงพอ | ตอบสถานะสำเร็จพร้อมข้อความข้อจำกัด ไม่ใช้ Error | Phase 6, 9 |
-| C-14 | `datasets/raw/` ของ Job Posting เข้า Git หรือไม่ (แหล่งมาตรฐานตัดสินแล้วใน [0010](0010-phase-2-reference-data-decisions.md); มีผลกับ Job `dataset` ของ CI ตาม [0011](0011-continuous-integration.md) ข้อ 7), `LICENSE`, ขอบเขต Dataset Dashboard, อ้างอิง ARCHITECTURE.md ที่ไม่มี | ตัดสินตามเวลาที่เกี่ยวข้อง | ตามเวลา |
-| C-15 | พารามิเตอร์วิจัย (แหล่งข้อมูล, น้ำหนัก, Threshold, Top-K, Evaluation Protocol) | กำหนดจากงานวิจัย | Phase 3, 7, 12 |
+| C-14 | ~~`datasets/raw/` ของ Job Posting เข้า Git หรือไม่~~ (ตัดสินแล้ว: ไม่เข้า Git ตาม [0012](0012-phase-3-labour-market-decisions.md); แหล่งมาตรฐานตาม [0010](0010-phase-2-reference-data-decisions.md)), `LICENSE`, ขอบเขต Dataset Dashboard, อ้างอิง ARCHITECTURE.md ที่ไม่มี | ตัดสินตามเวลาที่เกี่ยวข้อง | ตามเวลา |
+| C-15 | พารามิเตอร์วิจัย (~~แหล่งข้อมูลและ Sampling ของ Phase 3~~ ค่าเริ่มต้นใน [0012](0012-phase-3-labour-market-decisions.md), น้ำหนัก, Threshold, Top-K, Evaluation Protocol) | กำหนดจากงานวิจัย | Phase 7, 12 |
 | - | เวอร์ชัน Node.js และ Python ที่ตรึง (`ENVIRONMENT_SETUP.md` §7, §9) | ตรึงด้วย lockfile ตอนเริ่ม | Phase 0 |
